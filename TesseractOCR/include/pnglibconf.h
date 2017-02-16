@@ -1,8 +1,8 @@
 /* pnglibconf.h - library build configuration */
 
-/* libpng version 1.6.20, December 3, 2015 */
+/* libpng version 1.6.28, January 5, 2017 */
 
-/* Copyright (c) 1998-2014 Glenn Randers-Pehrson */
+/* Copyright (c) 1998-2016 Glenn Randers-Pehrson */
 
 /* This code is released under the libpng license. */
 /* For conditions of distribution and use, see the disclaimer */
@@ -107,6 +107,7 @@
 #define PNG_SIMPLIFIED_READ_SUPPORTED
 #define PNG_SIMPLIFIED_WRITE_AFIRST_SUPPORTED
 #define PNG_SIMPLIFIED_WRITE_BGR_SUPPORTED
+#define PNG_SIMPLIFIED_WRITE_STDIO_SUPPORTED
 #define PNG_SIMPLIFIED_WRITE_SUPPORTED
 #define PNG_STDIO_SUPPORTED
 #define PNG_STORE_UNKNOWN_CHUNKS_SUPPORTED
@@ -202,7 +203,7 @@
 #define PNG_USER_HEIGHT_MAX 1000000
 #define PNG_USER_WIDTH_MAX 1000000
 #define PNG_ZBUF_SIZE 8192
-#define PNG_ZLIB_VERNUM 0x1250
+#define PNG_ZLIB_VERNUM 0x1280
 #define PNG_Z_DEFAULT_COMPRESSION (-1)
 #define PNG_Z_DEFAULT_NOFILTER_STRATEGY 0
 #define PNG_Z_DEFAULT_STRATEGY 1
