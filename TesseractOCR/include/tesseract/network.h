@@ -85,7 +85,7 @@ enum NetworkType {
 enum NetworkFlags {
   // Network forward/backprop behavior.
   NF_LAYER_SPECIFIC_LR = 64,  // Separate learning rate for each layer.
-  NF_ADA_GRAD = 128,          // Weight-specific learning rate.
+  NF_ADAM = 128,              // Weight-specific learning rate.
 };
 
 // State of training and desired state used in SetEnableTraining.
@@ -93,9 +93,10 @@ enum TrainingState {
   // Valid states of training_.
   TS_DISABLED,      // Disabled permanently.
   TS_ENABLED,       // Enabled for backprop and to write a training dump.
+                    // Re-enable from ANY disabled state.
   TS_TEMP_DISABLE,  // Temporarily disabled to write a recognition dump.
   // Valid only for SetEnableTraining.
-  TS_RE_ENABLE,  // Re-Enable whatever the current state.
+  TS_RE_ENABLE,  // Re-Enable from TS_TEMP_DISABLE, but not TS_DISABLED.
 };
 
 // Base class for network types. Not quite an abstract base class, but almost.
@@ -171,6 +172,14 @@ class Network {
   // and should not be deleted by any of the networks.
   // Returns the number of weights initialized.
   virtual int InitWeights(float range, TRand* randomizer);
+  // Changes the number of outputs to the size of the given code_map, copying
+  // the old weight matrix entries for each output from code_map[output] where
+  // non-negative, and uses the mean (over all outputs) of the existing weights
+  // for all outputs with negative code_map entries. Returns the new number of
+  // weights. Only operates on Softmax layers with old_no outputs.
+  virtual int RemapOutputs(int old_no, const std::vector<int>& code_map) {
+    return 0;
+  }
 
   // Converts a float network to an int network.
   virtual void ConvertToInt() {}
@@ -208,14 +217,13 @@ class Network {
   // Should be overridden by subclasses, but called by their Serialize.
   virtual bool Serialize(TFile* fp) const;
   // Reads from the given file. Returns false in case of error.
-  // If swap is true, assumes a big/little-endian swap is needed.
   // Should be overridden by subclasses, but NOT called by their DeSerialize.
-  virtual bool DeSerialize(bool swap, TFile* fp);
+  virtual bool DeSerialize(TFile* fp);
 
-  // Updates the weights using the given learning rate and momentum.
-  // num_samples is the quotient to be used in the adagrad computation iff
-  // use_ada_grad_ is true.
-  virtual void Update(float learning_rate, float momentum, int num_samples) {}
+  // Updates the weights using the given learning rate, momentum and adam_beta.
+  // num_samples is used in the adam computation iff use_adam_ is true.
+  virtual void Update(float learning_rate, float momentum, float adam_beta,
+                      int num_samples) {}
   // Sums the products of weight updates in *this and other, splitting into
   // positive (same direction) in *same and negative (different direction) in
   // *changed.
@@ -223,10 +231,9 @@ class Network {
                                 double* changed) const {}
 
   // Reads from the given file. Returns NULL in case of error.
-  // If swap is true, assumes a big/little-endian swap is needed.
   // Determines the type of the serialized class and calls its DeSerialize
   // on a new object of the appropriate type, which is returned.
-  static Network* CreateFromFile(bool swap, TFile* fp);
+  static Network* CreateFromFile(TFile* fp);
 
   // Runs forward propagation of activations on the input line.
   // Note that input and output are both 2-d arrays.

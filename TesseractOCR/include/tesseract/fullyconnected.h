@@ -68,6 +68,12 @@ class FullyConnected : public Network {
   // Sets up the network for training. Initializes weights using weights of
   // scale `range` picked according to the random number generator `randomizer`.
   virtual int InitWeights(float range, TRand* randomizer);
+  // Changes the number of outputs to the size of the given code_map, copying
+  // the old weight matrix entries for each output from code_map[output] where
+  // non-negative, and uses the mean (over all outputs) of the existing weights
+  // for all outputs with negative code_map entries. Returns the new number of
+  // weights. Only operates on Softmax layers with old_no outputs.
+  int RemapOutputs(int old_no, const std::vector<int>& code_map) override;
 
   // Converts a float network to an int network.
   virtual void ConvertToInt();
@@ -78,8 +84,7 @@ class FullyConnected : public Network {
   // Writes to the given file. Returns false in case of error.
   virtual bool Serialize(TFile* fp) const;
   // Reads from the given file. Returns false in case of error.
-  // If swap is true, assumes a big/little-endian swap is needed.
-  virtual bool DeSerialize(bool swap, TFile* fp);
+  virtual bool DeSerialize(TFile* fp);
 
   // Runs forward propagation of activations on the input line.
   // See Network for a detailed discussion of the arguments.
@@ -102,10 +107,10 @@ class FullyConnected : public Network {
                         TransposedArray* errors_t, double* backprop);
   void FinishBackward(const TransposedArray& errors_t);
 
-  // Updates the weights using the given learning rate and momentum.
-  // num_samples is the quotient to be used in the adagrad computation iff
-  // use_ada_grad_ is true.
-  virtual void Update(float learning_rate, float momentum, int num_samples);
+  // Updates the weights using the given learning rate, momentum and adam_beta.
+  // num_samples is used in the adam computation iff use_adam_ is true.
+  void Update(float learning_rate, float momentum, float adam_beta,
+              int num_samples) override;
   // Sums the products of weight updates in *this and other, splitting into
   // positive (same direction) in *same and negative (different direction) in
   // *changed.

@@ -79,8 +79,8 @@ typedef TessResultCallback3<bool, SerializeAmount, const LSTMTrainer*,
 // Function to compute and record error rates on some external test set(s).
 // Args are: iteration, mean errors, model, training stage.
 // Returns a STRING containing logging information about the tests.
-typedef TessResultCallback4<STRING, int, const double*,
-                            const GenericVector<char>&, int>* TestCallback;
+typedef TessResultCallback4<STRING, int, const double*, const TessdataManager&,
+                            int>* TestCallback;
 
 // Trainer class for LSTM networks. Most of the effort is in creating the
 // ideal target outputs from the transcription. A box file is used if it is
@@ -98,23 +98,22 @@ class LSTMTrainer : public LSTMRecognizer {
   virtual ~LSTMTrainer();
 
   // Tries to deserialize a trainer from the given file and silently returns
-  // false in case of failure.
-  bool TryLoadingCheckpoint(const char* filename);
+  // false in case of failure. If old_traineddata is not null, then it is
+  // assumed that the character set is to be re-mapped from old_traininddata to
+  // the new, with consequent change in weight matrices etc.
+  bool TryLoadingCheckpoint(const char* filename, const char* old_traineddata);
 
-  // Initializes the character set encode/decode mechanism.
-  // train_flags control training behavior according to the TrainingFlags
-  // enum, including character set encoding.
-  // script_dir is required for TF_COMPRESS_UNICHARSET, and, if provided,
-  // fully initializes the unicharset from the universal unicharsets.
-  // Note: Call before InitNetwork!
-  void InitCharSet(const UNICHARSET& unicharset, const STRING& script_dir,
-                   int train_flags);
   // Initializes the character set encode/decode mechanism directly from a
-  // previously setup UNICHARSET and UnicharCompress.
-  // ctc_mode controls how the truth text is mapped to the network targets.
-  // Note: Call before InitNetwork!
-  void InitCharSet(const UNICHARSET& unicharset,
-                   const UnicharCompress& recoder);
+  // previously setup traineddata containing dawgs, UNICHARSET and
+  // UnicharCompress. Note: Call before InitNetwork!
+  void InitCharSet(const string& traineddata_path) {
+    ASSERT_HOST(mgr_.Init(traineddata_path.c_str()));
+    InitCharSet();
+  }
+  void InitCharSet(const TessdataManager& mgr) {
+    mgr_ = mgr;
+    InitCharSet();
+  }
 
   // Initializes the trainer with a network_spec in the network description
   // net_flags control network behavior according to the NetworkFlags enum.
@@ -123,7 +122,8 @@ class LSTMTrainer : public LSTMRecognizer {
   // For other args see NetworkBuilder::InitNetwork.
   // Note: Be sure to call InitCharSet before InitNetwork!
   bool InitNetwork(const STRING& network_spec, int append_index, int net_flags,
-                   float weight_range, float learning_rate, float momentum);
+                   float weight_range, float learning_rate, float momentum,
+                   float adam_beta);
   // Initializes a trainer from a serialized TFNetworkModel proto.
   // Returns the global step of TensorFlow graph or 0 if failed.
   // Building a compatible TF graph: See tfnetwork.proto.
@@ -175,17 +175,14 @@ class LSTMTrainer : public LSTMRecognizer {
       double dict_ratio_step, double max_dict_ratio, double min_cert_offset,
       double cert_offset_step, double max_cert_offset, STRING* results);
 
-  void SetSerializeMode(SerializeAmount serialize_amount) const {
-    serialize_amount_ = serialize_amount;
-  }
-
   // Provides output on the distribution of weight values.
   void DebugNetwork();
 
   // Loads a set of lstmf files that were created using the lstm.train config to
   // tesseract into memory ready for training. Returns false if nothing was
   // loaded.
-  bool LoadAllTrainingData(const GenericVector<STRING>& filenames);
+  bool LoadAllTrainingData(const GenericVector<STRING>& filenames,
+                           CachingStrategy cache_strategy);
 
   // Keeps track of best and locally worst error rate, using internally computed
   // values. See MaintainCheckpointsSpecific for more detail.
@@ -213,10 +210,10 @@ class LSTMTrainer : public LSTMRecognizer {
   int CurrentTrainingStage() const { return training_stage_; }
 
   // Writes to the given file. Returns false in case of error.
-  virtual bool Serialize(TFile* fp) const;
+  virtual bool Serialize(SerializeAmount serialize_amount,
+                         const TessdataManager* mgr, TFile* fp) const;
   // Reads from the given file. Returns false in case of error.
-  // If swap is true, assumes a big/little-endian swap is needed.
-  virtual bool DeSerialize(bool swap, TFile* fp);
+  virtual bool DeSerialize(const TessdataManager* mgr, TFile* fp);
 
   // De-serializes the saved best_trainer_ into sub_trainer_, and adjusts the
   // learning rates (by scaling reduction, or layer specific, according to
@@ -254,14 +251,6 @@ class LSTMTrainer : public LSTMRecognizer {
                            const UnicharCompress* recoder, bool simple_text,
                            int null_char, GenericVector<int>* labels);
 
-  // Converts the network to int if not already.
-  void ConvertToInt() {
-    if ((training_flags_ & TF_INT_MODE) == 0) {
-      network_->ConvertToInt();
-      training_flags_ |= TF_INT_MODE;
-    }
-  }
-
   // Performs forward-backward on the given trainingdata.
   // Returns the sample that was used or NULL if the next sample was deemed
   // unusable. samples_trainer could be this or an alternative trainer that
@@ -288,26 +277,37 @@ class LSTMTrainer : public LSTMRecognizer {
                                   NetworkIO* fwd_outputs, NetworkIO* targets);
 
   // Writes the trainer to memory, so that the current training state can be
-  // restored.
+  // restored.  *this must always be the master trainer that retains the only
+  // copy of the training data and language model. trainer is the model that is
+  // actually serialized.
   bool SaveTrainingDump(SerializeAmount serialize_amount,
                         const LSTMTrainer* trainer,
                         GenericVector<char>* data) const;
 
-  // Reads previously saved trainer from memory.
-  bool ReadTrainingDump(const GenericVector<char>& data, LSTMTrainer* trainer);
-  bool ReadSizedTrainingDump(const char* data, int size);
+  // Reads previously saved trainer from memory. *this must always be the
+  // master trainer that retains the only copy of the training data and
+  // language model. trainer is the model that is restored.
+  bool ReadTrainingDump(const GenericVector<char>& data,
+                        LSTMTrainer* trainer) const {
+    if (data.empty()) return false;
+    return ReadSizedTrainingDump(&data[0], data.size(), trainer);
+  }
+  bool ReadSizedTrainingDump(const char* data, int size,
+                             LSTMTrainer* trainer) const {
+    return trainer->ReadLocalTrainingDump(&mgr_, data, size);
+  }
+  // Restores the model to *this.
+  bool ReadLocalTrainingDump(const TessdataManager* mgr, const char* data,
+                             int size);
 
   // Sets up the data for MaintainCheckpoints from a light ReadTrainingDump.
   void SetupCheckpointInfo();
 
+  // Writes the full recognition traineddata to the given filename.
+  bool SaveTraineddata(const STRING& filename);
+
   // Writes the recognizer to memory, so that it can be used for testing later.
   void SaveRecognitionDump(GenericVector<char>* data) const;
-
-  // Reads and returns a previously saved recognizer from memory.
-  static LSTMRecognizer* ReadRecognitionDump(const GenericVector<char>& data);
-
-  // Writes current best model to a file, unless it has already been written.
-  bool SaveBestModel(FileWriter writer) const;
 
   // Returns a suitable filename for a training dump, based on the model_base_,
   // the iteration and the error rates.
@@ -315,15 +315,20 @@ class LSTMTrainer : public LSTMRecognizer {
 
   // Fills the whole error buffer of the given type with the given value.
   void FillErrorBuffer(double new_error, ErrorTypes type);
+  // Helper generates a map from each current recoder_ code (ie softmax index)
+  // to the corresponding old_recoder code, or -1 if there isn't one.
+  std::vector<int> MapRecoder(const UNICHARSET& old_chset,
+                              const UnicharCompress& old_recoder) const;
 
  protected:
+  // Private version of InitCharSet above finishes the job after initializing
+  // the mgr_ data member.
+  void InitCharSet();
+  // Helper computes and sets the null_char_.
+  void SetNullChar();
+
   // Factored sub-constructor sets up reasonable default values.
   void EmptyConstructor();
-
-  // Sets the unicharset properties using the given script_dir as a source of
-  // script unicharsets. If the flag TF_COMPRESS_UNICHARSET is true, also sets
-  // up the recoder_ to simplify the unicharset.
-  void SetUnicharsetProperties(const STRING& script_dir);
 
   // Outputs the string and periodically displays the given network inputs
   // as an image in the given window, and the corresponding labels at the
@@ -405,8 +410,6 @@ class LSTMTrainer : public LSTMRecognizer {
   STRING checkpoint_name_;
   // Training data.
   DocumentCache training_data_;
-  // A hack to serialize less data for batch training and record file version.
-  mutable SerializeAmount serialize_amount_;
   // Name to use when saving best_trainer_.
   STRING best_model_name_;
   // Number of available training stages.
@@ -420,7 +423,7 @@ class LSTMTrainer : public LSTMRecognizer {
   CheckPointWriter checkpoint_writer_;
 
   // ===Serialized data to ensure that a restart produces the same results.===
-  // These members are only serialized when serialize_amount_ != LIGHT.
+  // These members are only serialized when serialize_amount != LIGHT.
   // Best error rate so far.
   double best_error_rate_;
   // Snapshot of all error rates at best_iteration_.
@@ -474,6 +477,8 @@ class LSTMTrainer : public LSTMRecognizer {
   GenericVector<double> error_buffers_[ET_COUNT];
   // Rounded mean percent trailing training errors in the buffers.
   double error_rates_[ET_COUNT];    // RMS training error.
+  // Traineddata file with optional dawgs + UNICHARSET and recoder.
+  TessdataManager mgr_;
 };
 
 }  // namespace tesseract.
