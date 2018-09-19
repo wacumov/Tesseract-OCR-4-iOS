@@ -980,7 +980,7 @@ namespace tesseract {
     tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(
                                                                           outputbase.fileSystemRepresentation,
                                                                           self.absoluteDataPath.fileSystemRepresentation,
-                                                                          false);
+                                                                          0.8);
 
     // Begin producing output
     const char* kUnknownTitle = "";
@@ -990,7 +990,7 @@ namespace tesseract {
 
     bool result = YES;
     for (int page = 0; page < images.count && result; page++) {
-        #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
         UIImage *image = images[page];
         if ([image isKindOfClass:[UIImage class]]) {
             Pix *pixs = [self pixForImage:image];
@@ -1001,7 +1001,7 @@ namespace tesseract {
             result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
             pixDestroy(&pix);
         }
-        #elif TARGET_OS_MAC
+#elif TARGET_OS_MAC
         NSImage *image = images[page];
         if ([image isKindOfClass:[NSImage class]]) {
             Pix *pixs = [self pixForImage:image];
@@ -1012,7 +1012,7 @@ namespace tesseract {
             result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
             pixDestroy(&pix);
         }
-        #endif
+#endif
     }
 
     //  error
