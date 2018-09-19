@@ -5,7 +5,7 @@ Tesseract OCR
 
 ---
 
-> This fork just intends to clean everything a bit up to make it actual useable with most recent versions of dependent libraries. Supports Tesseract 4 and iOS 11+ and macOS 10.10+
+> This fork just intends to clean everything a bit up to make it actual useable with most recent versions of dependent libraries. Supports Tesseract 4 and iOS 10+ and macOS 10.10+
 >
 > [Dirk Holtwick](https://holtwick.de)
 
