@@ -658,13 +658,7 @@ namespace tesseract {
 }
 
 - (BOOL)isEngineConfigured {
-    if (_tesseract != nullptr) {
-        id version = @(tesseract::TessBaseAPI::Version());
-        NSLog(@"Engine is configured. Version = %@", version);
-        return YES;
-    }
-    NSLog(@"Engine is not configured!");
-    return NO;
+    return _tesseract != nullptr;
 }
 
 #pragma mark - Result fetching
@@ -975,6 +969,51 @@ namespace tesseract {
     return nil;
 }
 
+bool ProcessPage(tesseract::TessBaseAPI *tesseract_,
+                 Pix* pix, int page_index, const char* filename,
+                 const char* retry_config, int timeout_millisec,
+                 tesseract::TessResultRenderer* renderer) {
+    tesseract_->SetInputName(filename);
+    tesseract_->SetImage(pix);
+    bool failed = false;
+
+    // Running with a timeout.
+    //    ETEXT_DESC monitor;
+    //    monitor.cancel = nullptr;
+    //    monitor.cancel_this = nullptr;
+    //    monitor.set_deadline_msecs(timeout_millisec);
+
+    // Now run the main recognition.
+    // failed = tesseract_->Recognize(&monitor) < 0;
+    failed = tesseract_->Recognize(nullptr) < 0;
+
+    Pix* page_pix = tesseract_->GetThresholdedImage();
+    pixWrite("tessinput.tif", page_pix, IFF_TIFF_G4);
+
+    //    if (failed && retry_config != nullptr && retry_config[0] != '\0') {
+    //        // Save current config variables before switching modes.
+    //        FILE* fp = fopen(kOldVarsFile, "wb");
+    //        if (fp == nullptr) {
+    //            tprintf("Error, failed to open file \"%s\"\n", kOldVarsFile);
+    //        } else {
+    //            PrintVariables(fp);
+    //            fclose(fp);
+    //        }
+    //        // Switch to alternate mode for retry.
+    //        tesseract_->ReadConfigFile(retry_config);
+    //        tesseract_->SetImage(pix);
+    //        tesseract_->Recognize(nullptr);
+    //        // Restore saved config variables.
+    //        tesseract_->ReadConfigFile(kOldVarsFile);
+    //    }
+
+    if (renderer && !failed) {
+        failed = !renderer->AddImage(tesseract_);
+    }
+
+    return !failed;
+}
+
 // outputbase is the name of the output file excluding
 // extension. For example, "/path/to/chocolate-chip-cookie-recipe"
 - (NSData *)recognizedPDFForImages:(NSArray*)images outputbase:(NSString*)outputbase {
@@ -1014,7 +1053,8 @@ namespace tesseract {
             pixDestroy(&pixs);
 
             const char *pagename = [NSString stringWithFormat:@"page #%i", page].UTF8String;
-            result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
+            //            result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
+            result = ProcessPage(_tesseract, pix, page, pagename, NULL, 0, renderer);
             pixDestroy(&pix);
         }
 #endif
@@ -1034,7 +1074,7 @@ namespace tesseract {
     renderer = nullptr;
 
     NSString *outputbaseFilePath = [outputbase stringByAppendingPathExtension:@"pdf"];
-    NSData *data = [NSData dataWithContentsOfFile:outputbaseFilePath];
+    NSData *data = [NSData dataWithContentsOfFile:outputbaseFilePath];    
     return data;
 }
 
