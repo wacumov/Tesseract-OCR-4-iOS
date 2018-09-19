@@ -15,7 +15,7 @@
 #import "UIImage+G8Equal.h"
 #elif TARGET_OS_MAC
 #import <AppKit/AppKit.h>
-#import <TesseractOCRmacOS/TesseractOCR.h>
+#import <TesseractOCR/TesseractOCR.h>
 #import "NSImage+G8Equal.h"
 #endif
 

@@ -13,7 +13,7 @@
 #import <TesseractOCR/TesseractOCR.h>
 #elif TARGET_OS_MAC
 #import <AppKit/AppKit.h>
-#import <TesseractOCRmacOS/TesseractOCR.h>
+#import <TesseractOCR/TesseractOCR.h>
 #endif
 
 #import <Kiwi/Kiwi.h>
