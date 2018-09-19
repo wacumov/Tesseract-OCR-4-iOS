@@ -54,20 +54,10 @@
 		333B8E4B2095CE630084EE39 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = TesseractOCR/ios/lib/libtiff.a; sourceTree = "<group>"; };
 		333B8E4C2095CE630084EE39 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblept.a; path = TesseractOCR/ios/lib/liblept.a; sourceTree = "<group>"; };
 		333B8E4D2095CE630084EE39 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = TesseractOCR/ios/lib/libjpeg.a; sourceTree = "<group>"; };
-		333B8E9D2095CF7C0084EE39 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
-		333B8E9E2095CF7C0084EE39 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtiff.a; sourceTree = "<group>"; };
-		333B8E9F2095CF7C0084EE39 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
-		333B8EA02095CF7C0084EE39 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
-		333B8EA12095CF7C0084EE39 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblept.a; sourceTree = "<group>"; };
 		334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8HierarchicalRecognizedBlock.h; sourceTree = "<group>"; };
 		33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8HierarchicalRecognizedBlock.m; sourceTree = "<group>"; };
 		33A5D6C720B983690038CE67 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33A5D8D720B98FB10038CE67 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
-		33A5D8D820B98FB10038CE67 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtiff.a; sourceTree = "<group>"; };
-		33A5D8D920B98FB10038CE67 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
-		33A5D8DA20B98FB10038CE67 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
-		33A5D8DB20B98FB10038CE67 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblept.a; sourceTree = "<group>"; };
 		33A5D98D20BA2E370038CE67 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblept.a; path = TesseractOCR/macos/lib/liblept.a; sourceTree = "<group>"; };
 		33A5D98E20BA2E370038CE67 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtesseract.a; path = TesseractOCR/macos/lib/libtesseract.a; sourceTree = "<group>"; };
 		33A5D98F20BA2E370038CE67 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = TesseractOCR/macos/lib/libjpeg.a; sourceTree = "<group>"; };
@@ -123,46 +113,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		333B8E532095CF7C0084EE39 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-				333B8E9C2095CF7C0084EE39 /* lib */,
-			);
-			path = ios;
-			sourceTree = "<group>";
-		};
-		333B8E9C2095CF7C0084EE39 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				333B8E9D2095CF7C0084EE39 /* libpng.a */,
-				333B8E9E2095CF7C0084EE39 /* libtiff.a */,
-				333B8E9F2095CF7C0084EE39 /* libtesseract.a */,
-				333B8EA02095CF7C0084EE39 /* libjpeg.a */,
-				333B8EA12095CF7C0084EE39 /* liblept.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		33A5D86E20B98FB10038CE67 /* macos */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D8D620B98FB10038CE67 /* lib */,
-			);
-			path = macos;
-			sourceTree = "<group>";
-		};
-		33A5D8D620B98FB10038CE67 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D8D720B98FB10038CE67 /* libpng.a */,
-				33A5D8D820B98FB10038CE67 /* libtiff.a */,
-				33A5D8D920B98FB10038CE67 /* libtesseract.a */,
-				33A5D8DA20B98FB10038CE67 /* libjpeg.a */,
-				33A5D8DB20B98FB10038CE67 /* liblept.a */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 		33A5D8DF20B9901F0038CE67 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,8 +140,6 @@
 		64A0292F17307C1D002B12E7 /* TesseractOCR */ = {
 			isa = PBXGroup;
 			children = (
-				333B8E532095CF7C0084EE39 /* ios */,
-				33A5D86E20B98FB10038CE67 /* macos */,
 				73C0A7B11A594A8000D823D4 /* TesseractOCR.h */,
 				64A029D617307CD0002B12E7 /* G8Tesseract.h */,
 				64A029D717307CD0002B12E7 /* G8Tesseract.mm */,
