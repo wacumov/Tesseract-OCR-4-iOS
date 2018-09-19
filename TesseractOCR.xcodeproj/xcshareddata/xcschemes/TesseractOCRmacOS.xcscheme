@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3387587B206A6A7F006E5B96"
-               BuildableName = "TesseractOCRmacOS.framework"
-               BlueprintName = "TesseractOCRmacOS"
-               ReferencedContainer = "container:Tesseract OCR iOS.xcodeproj">
+               BuildableName = "TesseractOCR.framework"
+               BlueprintName = "TesseractOCR-macOS"
+               ReferencedContainer = "container:TesseractOCR.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "334A68A320AF93DE00AAA630"
                BuildableName = "TesseractOCRmacOSTests.xctest"
                BlueprintName = "TesseractOCRmacOSTests"
-               ReferencedContainer = "container:Tesseract OCR iOS.xcodeproj">
+               ReferencedContainer = "container:TesseractOCR.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3387587B206A6A7F006E5B96"
-            BuildableName = "TesseractOCRmacOS.framework"
-            BlueprintName = "TesseractOCRmacOS"
-            ReferencedContainer = "container:Tesseract OCR iOS.xcodeproj">
+            BuildableName = "TesseractOCR.framework"
+            BlueprintName = "TesseractOCR-macOS"
+            ReferencedContainer = "container:TesseractOCR.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3387587B206A6A7F006E5B96"
-            BuildableName = "TesseractOCRmacOS.framework"
-            BlueprintName = "TesseractOCRmacOS"
-            ReferencedContainer = "container:Tesseract OCR iOS.xcodeproj">
+            BuildableName = "TesseractOCR.framework"
+            BlueprintName = "TesseractOCR-macOS"
+            ReferencedContainer = "container:TesseractOCR.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3387587B206A6A7F006E5B96"
-            BuildableName = "TesseractOCRmacOS.framework"
-            BlueprintName = "TesseractOCRmacOS"
-            ReferencedContainer = "container:Tesseract OCR iOS.xcodeproj">
+            BuildableName = "TesseractOCR.framework"
+            BlueprintName = "TesseractOCR-macOS"
+            ReferencedContainer = "container:TesseractOCR.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

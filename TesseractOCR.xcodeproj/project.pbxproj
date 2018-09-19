@@ -820,9 +820,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3387587B206A6A7F006E5B96 /* TesseractOCRmacOS */ = {
+		3387587B206A6A7F006E5B96 /* TesseractOCR-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCRmacOS" */;
+			buildConfigurationList = 338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCR-macOS" */;
 			buildPhases = (
 				3387587C206A6A7F006E5B96 /* Build Dependent Libraries */,
 				3387587D206A6A7F006E5B96 /* Sources */,
@@ -834,14 +834,14 @@
 			);
 			dependencies = (
 			);
-			name = TesseractOCRmacOS;
+			name = "TesseractOCR-macOS";
 			productName = "TesseractOCR-Framework";
 			productReference = 334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		73C0A77B1A592C2B00D823D4 /* TesseractOCR */ = {
+		73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR" */;
+			buildConfigurationList = 73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR-iOS" */;
 			buildPhases = (
 				84E5F9C61B7A2F4D0012381C /* Build Dependent Libraries */,
 				73C0A7771A592C2B00D823D4 /* Sources */,
@@ -853,7 +853,7 @@
 			);
 			dependencies = (
 			);
-			name = TesseractOCR;
+			name = "TesseractOCR-iOS";
 			productName = "TesseractOCR-Framework";
 			productReference = 33A5D6C720B983690038CE67 /* TesseractOCR.framework */;
 			productType = "com.apple.product-type.framework";
@@ -873,7 +873,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR iOS" */;
+			buildConfigurationList = 64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "TesseractOCR" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -885,8 +885,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73C0A77B1A592C2B00D823D4 /* TesseractOCR */,
-				3387587B206A6A7F006E5B96 /* TesseractOCRmacOS */,
+				73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */,
+				3387587B206A6A7F006E5B96 /* TesseractOCR-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1257,7 +1257,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1303,7 +1303,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1407,7 +1407,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1418,7 +1418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCRmacOS" */ = {
+		338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCR-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				338758D8206A6A7F006E5B96 /* Debug */,
@@ -1428,7 +1428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR iOS" */ = {
+		64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "TesseractOCR" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64F74CD5172FD75F0068E657 /* Debug */,
@@ -1438,7 +1438,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR" */ = {
+		73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73C0A78F1A592C2B00D823D4 /* Debug */,
