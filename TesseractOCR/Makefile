@@ -30,7 +30,7 @@ ifeq ($(platform), ios)
 	PLATFORM_PREFIX=ios
 	SDK_IPHONEOS_PATH=$(shell xcrun --sdk iphoneos --show-sdk-path)
 	SDK_IPHONESIMULATOR_PATH=$(shell xcrun --sdk iphonesimulator --show-sdk-path)
-	IOS_DEPLOY_TGT="10.0"
+	IOS_DEPLOY_TGT="11.0"
 	PLATFORM_VERSION_MIN=iphoneos-version-min=$(IOS_DEPLOY_TGT)
 
 	sdks = $(SDK_IPHONEOS_PATH) $(SDK_IPHONEOS_PATH) $(SDK_IPHONEOS_PATH) $(SDK_IPHONESIMULATOR_PATH) $(SDK_IPHONESIMULATOR_PATH)
@@ -42,7 +42,7 @@ ifeq ($(platform), ios)
 else ifeq ($(platform), macos)
 	PLATFORM_PREFIX=macos
 	SDK_MACOS_PATH=$(shell xcrun --sdk macosx --show-sdk-path)
-	MACOS_DEPLOY_TGT="10.13"
+	MACOS_DEPLOY_TGT="10.10"
 	PLATFORM_VERSION_MIN=macosx-version-min=$(MACOS_DEPLOY_TGT)
 
 	sdks = $(SDK_MACOS_PATH)
@@ -131,7 +131,7 @@ $(TESSERACT_SRC)/$(PLATFORM_PREFIX)/%/Makefile : $(libtessconfig) $(libleptfat)
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
 	ln -s $(LEPTON_SRC)/src/ leptonica ; \
-	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-graphics
+	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-graphics 
 
 $(libtessconfig) : $(libtessautogen)
 	cd $(@D) && ./autogen.sh 2> /dev/null
@@ -159,7 +159,7 @@ $(LEPTON_SRC)/$(PLATFORM_PREFIX)/%/Makefile : $(imagesfat) $(libleptconfig)
 	export PKG_CONFIG_PATH=$(PNG_SRC)/$*/:$(JPEG_SRC)/$*/:$(TIFF_SRC)/$*/ ; \
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
-	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --without-giflib --with-libtiff
+	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --without-giflib --with-libtiff --without-libwebp 
 
 $(libleptconfig) : $(libleptautogen)
 	cd $(@D) && ./autogen.sh 2> /dev/null
