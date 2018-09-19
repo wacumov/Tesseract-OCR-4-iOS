@@ -7,7 +7,13 @@
 //  Under MIT License. See 'LICENCE' for more informations.
 //
 
+#import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 #import <UIKit/UIKit.h>
+#elif TARGET_OS_MAC
+#import <AppKit/AppKit.h>
+#endif
+
 #import "G8Constants.h"
 #import "G8TesseractDelegate.h"
 
@@ -109,7 +115,11 @@ extern NSInteger const kG8MaxCredibleResolution;
 /**
  *  An image on which Tesseract should perform recognition.
  */
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 @property (nonatomic, strong) UIImage *image;
+#elif TARGET_OS_MAC
+@property (nonatomic, strong) NSImage *image;
+#endif
 
 /**
  *  A rectangle to specify the region of the image on which Tesseract should
@@ -156,6 +166,8 @@ extern NSInteger const kG8MaxCredibleResolution;
  */
 - (NSString *)recognizedHOCRForPageNumber:(int)pageNumber;
 
+// TODO: Fix up documentation and change to not return NSData (as the data is
+// already being written to the outputbase path)
 /**
  *  Produces a PDF output with the pages sent to the function
  *  @param  images  An array of the input images being recognized and 
@@ -163,7 +175,8 @@ extern NSInteger const kG8MaxCredibleResolution;
  *  @return NSData  representing output PDF file or nil if error occured or
  *                  the engine is not properly configured.
  */
-- (NSData *)recognizedPDFForImages:(NSArray*)images;
+- (NSData *)recognizedPDFForImages:(NSArray*)images
+            outputbase:(NSString*)outputbase;
 
 /**
  *  Run Tesseract's page analysis on the target image.
@@ -248,13 +261,39 @@ extern NSInteger const kG8MaxCredibleResolution;
  */
 - (NSArray *)recognizedBlocksByIteratorLevel:(G8PageIteratorLevel)pageIteratorLevel;
 
+
+/**
+ *	Retrieve Tesseract's recognition result starting at the provided level including
+ *	all sublevels down to the character level.
+ *	For example, the pageIteratorLevel == G8PageIteratorLevelTextline returns
+ *  an array of `G8RecognizedBlock`'s representing the lines recognized
+ *  in the target image. Each textline includes an array of `G8RecognizedBlock`'s 
+ *	representing words which in turn include an array of `G8RecognizedBlock`'s
+ *	representing characters.
+ *
+ *  @param pageIteratorLevel A `G8PageIteratorLevel` representing the start resolution
+ *                           See G8Constants.h for the available resolution options.
+ *
+ *	@return An array of `G8HierarchicalRecognizedBlock`'s, each containing a confidence
+ *			value and a bounding box for the text it represents.
+ *
+ *  @note The method returns nil, if the engine is not properly configured.
+ */
+- (NSArray *) recognizedHierarchicalBlocksByIteratorLevel:(G8PageIteratorLevel)pageIteratorLevel;
+
+
+
 #pragma mark - Debug methods
 
 /**
  *  The result of Tesseract's internal thresholding on the target image or nil,
  *  if engine is not properly configured
  */
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 @property (nonatomic, readonly) UIImage *thresholdedImage;
+#elif TARGET_OS_MAC
+@property (nonatomic, readonly) NSImage *thresholdedImage;
+#endif
 
 /**
  *  Create a copy of the target image with boxes (and optionally labels) drawn 
@@ -266,9 +305,15 @@ extern NSInteger const kG8MaxCredibleResolution;
  *
  *  @return The resulting image.
  */
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 - (UIImage *)imageWithBlocks:(NSArray *)blocks
                     drawText:(BOOL)drawText
                  thresholded:(BOOL)thresholded;
+#elif TARGET_OS_MAC
+- (NSImage *)imageWithBlocks:(NSArray *)blocks
+                    drawText:(BOOL)drawText
+                 thresholded:(BOOL)thresholded;
+#endif
 
 /**
  *  An optional delegate for Tesseract's recognition.
@@ -314,25 +359,25 @@ extern NSInteger const kG8MaxCredibleResolution;
 /**
  *  Initialize Tesseract with the provided language and engine mode.
  *
- *  @param language             The language to use in recognition. See 
- *                              `language`.
- *  @param configDictionary     A dictionary of config variables to set.
- *  @param configFileNames      An array of file names containing key-value 
- *                              config pairs. Config settings can be set at
- *                              initialization or run-time.  Furthermore, they 
- *                              could be specified at the same time, in which 
- *                              case Tesseract will get variables from every
- *                              config file as well as the dictionary.
- *                              The config files must exist in one of two 
- *                              possible folders:  tessdata/tessconfigs or 
- *                              tessdata/configs.
- *  @param cachesRelatedPath    If the cachesRelatedDataPath is specified, the 
- *                              whole contents of the tessdata folder in the
- *                              application bundle will be copied to 
- *                              Library/Caches/cachesRelatedDataPath/tessdata
- *                              and Tesseract will be set to use that path.
- *  @param engineMode           The engine mode to use in recognition. See 
- *                              `engineMode`.
+ *  @param language               The language to use in recognition. See
+ *                                `language`.
+ *  @param configDictionary       A dictionary of config variables to set.
+ *  @param configFileNames        An array of file names containing key-value
+ *                                config pairs. Config settings can be set at
+ *                                initialization or run-time.  Furthermore, they
+ *                                could be specified at the same time, in which
+ *                                case Tesseract will get variables from every
+ *                                config file as well as the dictionary.
+ *                                The config files must exist in one of two
+ *                                possible folders:  tessdata/tessconfigs or
+ *                                tessdata/configs.
+ *  @param cachesRelatedDataPath  If the cachesRelatedDataPath is specified, the
+ *                                whole contents of the tessdata folder in the
+ *                                application bundle will be copied to
+ *                                Library/Caches/cachesRelatedDataPath/tessdata
+ *                                and Tesseract will be set to use that path.
+ *  @param engineMode             The engine mode to use in recognition. See
+ *                                `engineMode`.
  *
  *  @return The initialized Tesseract object.
  *
