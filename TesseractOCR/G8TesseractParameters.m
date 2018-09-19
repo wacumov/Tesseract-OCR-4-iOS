@@ -12,6 +12,7 @@
 
 NSString *const kG8ParamTospTableXhtSpRatio = @"tosp_table_xht_sp_ratio";
 NSString *const kG8ParamTesseditTrainFromBoxes = @"tessedit_train_from_boxes";
+NSString *const kG8ParamJpgQuality = @"jpg_quality";
 NSString *const kG8ParamTextordMinLinesize = @"textord_min_linesize";
 NSString *const kG8ParamTospWideFraction = @"tosp_wide_fraction";
 NSString *const kG8ParamTextordFixXheightBug = @"textord_fix_xheight_bug";

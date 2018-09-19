@@ -21,6 +21,10 @@ extern NSString *const kG8ParamTospTableXhtSpRatio;
 ///@brief Type BOOL Default false
 extern NSString *const kG8ParamTesseditTrainFromBoxes;
 
+///Set JPEG quality level
+///@brief Type INT Default 85
+extern NSString *const kG8ParamJpgQuality;
+
 ///* blob height for initial linesize
 ///@brief Type double Default 1.25
 extern NSString *const kG8ParamTextordMinLinesize;
@@ -565,8 +569,8 @@ extern NSString *const kG8ParamTospTableKnSpRatio;
 ///@brief Type double Default 0.08
 extern NSString *const kG8ParamTextordAscheightModeFraction;
 
-///Allows to include glyph confidences in the hOCR output
-///@brief Type BOOL Default false
+///Allows to include glyph confidences in the hOCR output. Valid input values are 0, 1 and 2. 0 is the default value. With 1 the glyph confidences of all timesteps are included. With 2 the glyph confidences are accumulated per charakter.
+///@brief Type INT Default 0
 extern NSString *const kG8ParamGlyphConfidences;
 
 ///A superscript scaled down more than this is unbelievably small.  For example, 0.3 means we expect the font size to be no smaller than 30% of the text line font size.
