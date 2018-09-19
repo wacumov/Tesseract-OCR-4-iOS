@@ -29,67 +29,6 @@
 		33A5D6D520B98B730038CE67 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E492095CE630084EE39 /* libpng.a */; };
 		33A5D6D620B98B730038CE67 /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4A2095CE630084EE39 /* libtesseract.a */; };
 		33A5D6D720B98B730038CE67 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4B2095CE630084EE39 /* libtiff.a */; };
-		33A5D92920B990E70038CE67 /* jpeglib.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87020B98FB10038CE67 /* jpeglib.h */; };
-		33A5D92A20B990E70038CE67 /* jerror.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87120B98FB10038CE67 /* jerror.h */; };
-		33A5D92B20B990E70038CE67 /* tiff.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87220B98FB10038CE67 /* tiff.h */; };
-		33A5D92C20B990E70038CE67 /* tiffvers.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87320B98FB10038CE67 /* tiffvers.h */; };
-		33A5D93120B990E70038CE67 /* ltrresultiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87920B98FB10038CE67 /* ltrresultiterator.h */; };
-		33A5D93220B990E70038CE67 /* pageiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D87A20B98FB10038CE67 /* pageiterator.h */; };
-		33A5D93820B990E70038CE67 /* host.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88020B98FB10038CE67 /* host.h */; };
-		33A5D93920B990E70038CE67 /* apitypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88120B98FB10038CE67 /* apitypes.h */; };
-		33A5D94020B990E70038CE67 /* renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88820B98FB10038CE67 /* renderer.h */; };
-		33A5D94220B990E70038CE67 /* publictypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88A20B98FB10038CE67 /* publictypes.h */; };
-		33A5D94320B990E70038CE67 /* unichar.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88B20B98FB10038CE67 /* unichar.h */; };
-		33A5D94520B990E70038CE67 /* ocrclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88D20B98FB10038CE67 /* ocrclass.h */; };
-		33A5D94620B990E70038CE67 /* resultiterator.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D88E20B98FB10038CE67 /* resultiterator.h */; };
-		33A5D94B20B990E70038CE67 /* serialis.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D89320B98FB10038CE67 /* serialis.h */; };
-		33A5D95020B990E70038CE67 /* baseapi.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D89820B98FB10038CE67 /* baseapi.h */; };
-		33A5D95120B990E70038CE67 /* capi.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D89920B98FB10038CE67 /* capi.h */; };
-		33A5D95820B990E70038CE67 /* tess_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8A020B98FB10038CE67 /* tess_version.h */; };
-		33A5D95920B990E70038CE67 /* strngs.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8A120B98FB10038CE67 /* strngs.h */; };
-		33A5D95A20B990E70038CE67 /* genericvector.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8A220B98FB10038CE67 /* genericvector.h */; };
-		33A5D95F20B990E70038CE67 /* helpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8A720B98FB10038CE67 /* helpers.h */; };
-		33A5D96120B990E70038CE67 /* thresholder.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8A920B98FB10038CE67 /* thresholder.h */; };
-		33A5D96220B990E70038CE67 /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8AA20B98FB10038CE67 /* platform.h */; };
-		33A5D96520B990E70038CE67 /* tesscallback.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8AD20B98FB10038CE67 /* tesscallback.h */; };
-		33A5D96720B990E70038CE67 /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8AF20B98FB10038CE67 /* png.h */; };
-		33A5D96820B990E70038CE67 /* pnglibconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B020B98FB10038CE67 /* pnglibconf.h */; };
-		33A5D96920B990E70038CE67 /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B120B98FB10038CE67 /* pngconf.h */; };
-		33A5D96A20B990E70038CE67 /* jconfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B220B98FB10038CE67 /* jconfig.h */; };
-		33A5D96B20B990E70038CE67 /* jmorecfg.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B320B98FB10038CE67 /* jmorecfg.h */; };
-		33A5D96C20B990E70038CE67 /* tiffio.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B420B98FB10038CE67 /* tiffio.h */; };
-		33A5D96D20B990E70038CE67 /* dewarp.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B620B98FB10038CE67 /* dewarp.h */; };
-		33A5D96E20B990E70038CE67 /* allheaders.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B720B98FB10038CE67 /* allheaders.h */; };
-		33A5D96F20B990E70038CE67 /* imageio.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B820B98FB10038CE67 /* imageio.h */; };
-		33A5D97020B990E70038CE67 /* bilateral.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8B920B98FB10038CE67 /* bilateral.h */; };
-		33A5D97120B990E70038CE67 /* morph.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BA20B98FB10038CE67 /* morph.h */; };
-		33A5D97220B990E70038CE67 /* endianness.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BB20B98FB10038CE67 /* endianness.h */; };
-		33A5D97320B990E70038CE67 /* bbuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BC20B98FB10038CE67 /* bbuffer.h */; };
-		33A5D97420B990E70038CE67 /* jbclass.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BD20B98FB10038CE67 /* jbclass.h */; };
-		33A5D97520B990E70038CE67 /* bmp.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BE20B98FB10038CE67 /* bmp.h */; };
-		33A5D97620B990E70038CE67 /* bmf.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8BF20B98FB10038CE67 /* bmf.h */; };
-		33A5D97720B990E70038CE67 /* recog.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C020B98FB10038CE67 /* recog.h */; };
-		33A5D97820B990E70038CE67 /* environ.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C120B98FB10038CE67 /* environ.h */; };
-		33A5D97920B990E70038CE67 /* readbarcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C220B98FB10038CE67 /* readbarcode.h */; };
-		33A5D97A20B990E70038CE67 /* regutils.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C320B98FB10038CE67 /* regutils.h */; };
-		33A5D97B20B990E70038CE67 /* sudoku.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C420B98FB10038CE67 /* sudoku.h */; };
-		33A5D97C20B990E70038CE67 /* gplot.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C520B98FB10038CE67 /* gplot.h */; };
-		33A5D97D20B990E70038CE67 /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C620B98FB10038CE67 /* list.h */; };
-		33A5D97E20B990E70038CE67 /* rbtree.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C720B98FB10038CE67 /* rbtree.h */; };
-		33A5D97F20B990E70038CE67 /* stringcode.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C820B98FB10038CE67 /* stringcode.h */; };
-		33A5D98020B990E70038CE67 /* array.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8C920B98FB10038CE67 /* array.h */; };
-		33A5D98120B990E70038CE67 /* ptra.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CA20B98FB10038CE67 /* ptra.h */; };
-		33A5D98220B990E70038CE67 /* stack.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CB20B98FB10038CE67 /* stack.h */; };
-		33A5D98320B990E70038CE67 /* heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CC20B98FB10038CE67 /* heap.h */; };
-		33A5D98420B990E70038CE67 /* watershed.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CD20B98FB10038CE67 /* watershed.h */; };
-		33A5D98520B990E70038CE67 /* ccbord.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CE20B98FB10038CE67 /* ccbord.h */; };
-		33A5D98620B990E70038CE67 /* alltypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8CF20B98FB10038CE67 /* alltypes.h */; };
-		33A5D98720B990E70038CE67 /* leptwin.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D020B98FB10038CE67 /* leptwin.h */; };
-		33A5D98820B990E70038CE67 /* queue.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D120B98FB10038CE67 /* queue.h */; };
-		33A5D98920B990E70038CE67 /* bmfdata.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D220B98FB10038CE67 /* bmfdata.h */; };
-		33A5D98A20B990E70038CE67 /* pix.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D320B98FB10038CE67 /* pix.h */; };
-		33A5D98B20B990E70038CE67 /* arrayaccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D420B98FB10038CE67 /* arrayaccess.h */; };
-		33A5D98C20B990E70038CE67 /* tiffconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D520B98FB10038CE67 /* tiffconf.h */; };
 		33A5D99220BA2E380038CE67 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98D20BA2E370038CE67 /* liblept.a */; };
 		33A5D99320BA2E380038CE67 /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98E20BA2E370038CE67 /* libtesseract.a */; };
 		33A5D99420BA2E380038CE67 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98F20BA2E370038CE67 /* libjpeg.a */; };
@@ -124,67 +63,6 @@
 		33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8HierarchicalRecognizedBlock.h; sourceTree = "<group>"; };
 		33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8HierarchicalRecognizedBlock.m; sourceTree = "<group>"; };
 		33A5D6C720B983690038CE67 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		33A5D87020B98FB10038CE67 /* jpeglib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
-		33A5D87120B98FB10038CE67 /* jerror.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jerror.h; sourceTree = "<group>"; };
-		33A5D87220B98FB10038CE67 /* tiff.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tiff.h; sourceTree = "<group>"; };
-		33A5D87320B98FB10038CE67 /* tiffvers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tiffvers.h; sourceTree = "<group>"; };
-		33A5D87920B98FB10038CE67 /* ltrresultiterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ltrresultiterator.h; sourceTree = "<group>"; };
-		33A5D87A20B98FB10038CE67 /* pageiterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pageiterator.h; sourceTree = "<group>"; };
-		33A5D88020B98FB10038CE67 /* host.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = host.h; sourceTree = "<group>"; };
-		33A5D88120B98FB10038CE67 /* apitypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = apitypes.h; sourceTree = "<group>"; };
-		33A5D88820B98FB10038CE67 /* renderer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = renderer.h; sourceTree = "<group>"; };
-		33A5D88A20B98FB10038CE67 /* publictypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = publictypes.h; sourceTree = "<group>"; };
-		33A5D88B20B98FB10038CE67 /* unichar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unichar.h; sourceTree = "<group>"; };
-		33A5D88D20B98FB10038CE67 /* ocrclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ocrclass.h; sourceTree = "<group>"; };
-		33A5D88E20B98FB10038CE67 /* resultiterator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = resultiterator.h; sourceTree = "<group>"; };
-		33A5D89320B98FB10038CE67 /* serialis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = serialis.h; sourceTree = "<group>"; };
-		33A5D89820B98FB10038CE67 /* baseapi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = baseapi.h; sourceTree = "<group>"; };
-		33A5D89920B98FB10038CE67 /* capi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = capi.h; sourceTree = "<group>"; };
-		33A5D8A020B98FB10038CE67 /* tess_version.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tess_version.h; sourceTree = "<group>"; };
-		33A5D8A120B98FB10038CE67 /* strngs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = strngs.h; sourceTree = "<group>"; };
-		33A5D8A220B98FB10038CE67 /* genericvector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = genericvector.h; sourceTree = "<group>"; };
-		33A5D8A720B98FB10038CE67 /* helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = helpers.h; sourceTree = "<group>"; };
-		33A5D8A920B98FB10038CE67 /* thresholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = thresholder.h; sourceTree = "<group>"; };
-		33A5D8AA20B98FB10038CE67 /* platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
-		33A5D8AD20B98FB10038CE67 /* tesscallback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tesscallback.h; sourceTree = "<group>"; };
-		33A5D8AF20B98FB10038CE67 /* png.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
-		33A5D8B020B98FB10038CE67 /* pnglibconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pnglibconf.h; sourceTree = "<group>"; };
-		33A5D8B120B98FB10038CE67 /* pngconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pngconf.h; sourceTree = "<group>"; };
-		33A5D8B220B98FB10038CE67 /* jconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jconfig.h; sourceTree = "<group>"; };
-		33A5D8B320B98FB10038CE67 /* jmorecfg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jmorecfg.h; sourceTree = "<group>"; };
-		33A5D8B420B98FB10038CE67 /* tiffio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tiffio.h; sourceTree = "<group>"; };
-		33A5D8B620B98FB10038CE67 /* dewarp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dewarp.h; sourceTree = "<group>"; };
-		33A5D8B720B98FB10038CE67 /* allheaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = allheaders.h; sourceTree = "<group>"; };
-		33A5D8B820B98FB10038CE67 /* imageio.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imageio.h; sourceTree = "<group>"; };
-		33A5D8B920B98FB10038CE67 /* bilateral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bilateral.h; sourceTree = "<group>"; };
-		33A5D8BA20B98FB10038CE67 /* morph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = morph.h; sourceTree = "<group>"; };
-		33A5D8BB20B98FB10038CE67 /* endianness.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = endianness.h; sourceTree = "<group>"; };
-		33A5D8BC20B98FB10038CE67 /* bbuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bbuffer.h; sourceTree = "<group>"; };
-		33A5D8BD20B98FB10038CE67 /* jbclass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = jbclass.h; sourceTree = "<group>"; };
-		33A5D8BE20B98FB10038CE67 /* bmp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bmp.h; sourceTree = "<group>"; };
-		33A5D8BF20B98FB10038CE67 /* bmf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bmf.h; sourceTree = "<group>"; };
-		33A5D8C020B98FB10038CE67 /* recog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = recog.h; sourceTree = "<group>"; };
-		33A5D8C120B98FB10038CE67 /* environ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = environ.h; sourceTree = "<group>"; };
-		33A5D8C220B98FB10038CE67 /* readbarcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readbarcode.h; sourceTree = "<group>"; };
-		33A5D8C320B98FB10038CE67 /* regutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = regutils.h; sourceTree = "<group>"; };
-		33A5D8C420B98FB10038CE67 /* sudoku.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sudoku.h; sourceTree = "<group>"; };
-		33A5D8C520B98FB10038CE67 /* gplot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gplot.h; sourceTree = "<group>"; };
-		33A5D8C620B98FB10038CE67 /* list.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
-		33A5D8C720B98FB10038CE67 /* rbtree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rbtree.h; sourceTree = "<group>"; };
-		33A5D8C820B98FB10038CE67 /* stringcode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stringcode.h; sourceTree = "<group>"; };
-		33A5D8C920B98FB10038CE67 /* array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = array.h; sourceTree = "<group>"; };
-		33A5D8CA20B98FB10038CE67 /* ptra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ptra.h; sourceTree = "<group>"; };
-		33A5D8CB20B98FB10038CE67 /* stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stack.h; sourceTree = "<group>"; };
-		33A5D8CC20B98FB10038CE67 /* heap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = heap.h; sourceTree = "<group>"; };
-		33A5D8CD20B98FB10038CE67 /* watershed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = watershed.h; sourceTree = "<group>"; };
-		33A5D8CE20B98FB10038CE67 /* ccbord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccbord.h; sourceTree = "<group>"; };
-		33A5D8CF20B98FB10038CE67 /* alltypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = alltypes.h; sourceTree = "<group>"; };
-		33A5D8D020B98FB10038CE67 /* leptwin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = leptwin.h; sourceTree = "<group>"; };
-		33A5D8D120B98FB10038CE67 /* queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
-		33A5D8D220B98FB10038CE67 /* bmfdata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bmfdata.h; sourceTree = "<group>"; };
-		33A5D8D320B98FB10038CE67 /* pix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pix.h; sourceTree = "<group>"; };
-		33A5D8D420B98FB10038CE67 /* arrayaccess.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arrayaccess.h; sourceTree = "<group>"; };
-		33A5D8D520B98FB10038CE67 /* tiffconf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tiffconf.h; sourceTree = "<group>"; };
 		33A5D8D720B98FB10038CE67 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpng.a; sourceTree = "<group>"; };
 		33A5D8D820B98FB10038CE67 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtiff.a; sourceTree = "<group>"; };
 		33A5D8D920B98FB10038CE67 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
@@ -268,94 +146,9 @@
 		33A5D86E20B98FB10038CE67 /* macos */ = {
 			isa = PBXGroup;
 			children = (
-				33A5D86F20B98FB10038CE67 /* include */,
 				33A5D8D620B98FB10038CE67 /* lib */,
 			);
 			path = macos;
-			sourceTree = "<group>";
-		};
-		33A5D86F20B98FB10038CE67 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D87020B98FB10038CE67 /* jpeglib.h */,
-				33A5D87120B98FB10038CE67 /* jerror.h */,
-				33A5D87220B98FB10038CE67 /* tiff.h */,
-				33A5D87320B98FB10038CE67 /* tiffvers.h */,
-				33A5D8AF20B98FB10038CE67 /* png.h */,
-				33A5D8B020B98FB10038CE67 /* pnglibconf.h */,
-				33A5D8B120B98FB10038CE67 /* pngconf.h */,
-				33A5D8B220B98FB10038CE67 /* jconfig.h */,
-				33A5D8B320B98FB10038CE67 /* jmorecfg.h */,
-				33A5D8B420B98FB10038CE67 /* tiffio.h */,
-				33A5D8D520B98FB10038CE67 /* tiffconf.h */,
-				33A5D8B520B98FB10038CE67 /* leptonica */,
-				33A5D87420B98FB10038CE67 /* tesseract */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		33A5D87420B98FB10038CE67 /* tesseract */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D87920B98FB10038CE67 /* ltrresultiterator.h */,
-				33A5D87A20B98FB10038CE67 /* pageiterator.h */,
-				33A5D88020B98FB10038CE67 /* host.h */,
-				33A5D88120B98FB10038CE67 /* apitypes.h */,
-				33A5D88820B98FB10038CE67 /* renderer.h */,
-				33A5D88A20B98FB10038CE67 /* publictypes.h */,
-				33A5D88B20B98FB10038CE67 /* unichar.h */,
-				33A5D88D20B98FB10038CE67 /* ocrclass.h */,
-				33A5D88E20B98FB10038CE67 /* resultiterator.h */,
-				33A5D89320B98FB10038CE67 /* serialis.h */,
-				33A5D89820B98FB10038CE67 /* baseapi.h */,
-				33A5D89920B98FB10038CE67 /* capi.h */,
-				33A5D8A020B98FB10038CE67 /* tess_version.h */,
-				33A5D8A120B98FB10038CE67 /* strngs.h */,
-				33A5D8A220B98FB10038CE67 /* genericvector.h */,
-				33A5D8A720B98FB10038CE67 /* helpers.h */,
-				33A5D8A920B98FB10038CE67 /* thresholder.h */,
-				33A5D8AA20B98FB10038CE67 /* platform.h */,
-				33A5D8AD20B98FB10038CE67 /* tesscallback.h */,
-			);
-			path = tesseract;
-			sourceTree = "<group>";
-		};
-		33A5D8B520B98FB10038CE67 /* leptonica */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D8B620B98FB10038CE67 /* dewarp.h */,
-				33A5D8B720B98FB10038CE67 /* allheaders.h */,
-				33A5D8B820B98FB10038CE67 /* imageio.h */,
-				33A5D8B920B98FB10038CE67 /* bilateral.h */,
-				33A5D8BA20B98FB10038CE67 /* morph.h */,
-				33A5D8BB20B98FB10038CE67 /* endianness.h */,
-				33A5D8BC20B98FB10038CE67 /* bbuffer.h */,
-				33A5D8BD20B98FB10038CE67 /* jbclass.h */,
-				33A5D8BE20B98FB10038CE67 /* bmp.h */,
-				33A5D8BF20B98FB10038CE67 /* bmf.h */,
-				33A5D8C020B98FB10038CE67 /* recog.h */,
-				33A5D8C120B98FB10038CE67 /* environ.h */,
-				33A5D8C220B98FB10038CE67 /* readbarcode.h */,
-				33A5D8C320B98FB10038CE67 /* regutils.h */,
-				33A5D8C420B98FB10038CE67 /* sudoku.h */,
-				33A5D8C520B98FB10038CE67 /* gplot.h */,
-				33A5D8C620B98FB10038CE67 /* list.h */,
-				33A5D8C720B98FB10038CE67 /* rbtree.h */,
-				33A5D8C820B98FB10038CE67 /* stringcode.h */,
-				33A5D8C920B98FB10038CE67 /* array.h */,
-				33A5D8CA20B98FB10038CE67 /* ptra.h */,
-				33A5D8CB20B98FB10038CE67 /* stack.h */,
-				33A5D8CC20B98FB10038CE67 /* heap.h */,
-				33A5D8CD20B98FB10038CE67 /* watershed.h */,
-				33A5D8CE20B98FB10038CE67 /* ccbord.h */,
-				33A5D8CF20B98FB10038CE67 /* alltypes.h */,
-				33A5D8D020B98FB10038CE67 /* leptwin.h */,
-				33A5D8D120B98FB10038CE67 /* queue.h */,
-				33A5D8D220B98FB10038CE67 /* bmfdata.h */,
-				33A5D8D320B98FB10038CE67 /* pix.h */,
-				33A5D8D420B98FB10038CE67 /* arrayaccess.h */,
-			);
-			path = leptonica;
 			sourceTree = "<group>";
 		};
 		33A5D8D620B98FB10038CE67 /* lib */ = {
@@ -465,68 +258,7 @@
 				338758B0206A6A7F006E5B96 /* G8RecognizedBlock.h in Headers */,
 				338758BB206A6A7F006E5B96 /* G8TesseractDelegate.h in Headers */,
 				338758CA206A6A7F006E5B96 /* G8Constants.h in Headers */,
-				33A5D92920B990E70038CE67 /* jpeglib.h in Headers */,
-				33A5D92A20B990E70038CE67 /* jerror.h in Headers */,
-				33A5D92B20B990E70038CE67 /* tiff.h in Headers */,
-				33A5D92C20B990E70038CE67 /* tiffvers.h in Headers */,
-				33A5D93120B990E70038CE67 /* ltrresultiterator.h in Headers */,
-				33A5D93220B990E70038CE67 /* pageiterator.h in Headers */,
-				33A5D93820B990E70038CE67 /* host.h in Headers */,
-				33A5D93920B990E70038CE67 /* apitypes.h in Headers */,
-				33A5D94020B990E70038CE67 /* renderer.h in Headers */,
-				33A5D94220B990E70038CE67 /* publictypes.h in Headers */,
-				33A5D94320B990E70038CE67 /* unichar.h in Headers */,
-				33A5D94520B990E70038CE67 /* ocrclass.h in Headers */,
-				33A5D94620B990E70038CE67 /* resultiterator.h in Headers */,
-				33A5D94B20B990E70038CE67 /* serialis.h in Headers */,
-				33A5D95020B990E70038CE67 /* baseapi.h in Headers */,
-				33A5D95120B990E70038CE67 /* capi.h in Headers */,
-				33A5D95820B990E70038CE67 /* tess_version.h in Headers */,
-				33A5D95920B990E70038CE67 /* strngs.h in Headers */,
-				33A5D95A20B990E70038CE67 /* genericvector.h in Headers */,
-				33A5D95F20B990E70038CE67 /* helpers.h in Headers */,
-				33A5D96120B990E70038CE67 /* thresholder.h in Headers */,
-				33A5D96220B990E70038CE67 /* platform.h in Headers */,
-				33A5D96520B990E70038CE67 /* tesscallback.h in Headers */,
-				33A5D96720B990E70038CE67 /* png.h in Headers */,
-				33A5D96820B990E70038CE67 /* pnglibconf.h in Headers */,
-				33A5D96920B990E70038CE67 /* pngconf.h in Headers */,
-				33A5D96A20B990E70038CE67 /* jconfig.h in Headers */,
-				33A5D96B20B990E70038CE67 /* jmorecfg.h in Headers */,
-				33A5D96C20B990E70038CE67 /* tiffio.h in Headers */,
-				33A5D96D20B990E70038CE67 /* dewarp.h in Headers */,
-				33A5D96E20B990E70038CE67 /* allheaders.h in Headers */,
-				33A5D96F20B990E70038CE67 /* imageio.h in Headers */,
-				33A5D97020B990E70038CE67 /* bilateral.h in Headers */,
-				33A5D97120B990E70038CE67 /* morph.h in Headers */,
-				33A5D97220B990E70038CE67 /* endianness.h in Headers */,
-				33A5D97320B990E70038CE67 /* bbuffer.h in Headers */,
-				33A5D97420B990E70038CE67 /* jbclass.h in Headers */,
-				33A5D97520B990E70038CE67 /* bmp.h in Headers */,
-				33A5D97620B990E70038CE67 /* bmf.h in Headers */,
-				33A5D97720B990E70038CE67 /* recog.h in Headers */,
-				33A5D97820B990E70038CE67 /* environ.h in Headers */,
-				33A5D97920B990E70038CE67 /* readbarcode.h in Headers */,
-				33A5D97A20B990E70038CE67 /* regutils.h in Headers */,
-				33A5D97B20B990E70038CE67 /* sudoku.h in Headers */,
-				33A5D97C20B990E70038CE67 /* gplot.h in Headers */,
-				33A5D97D20B990E70038CE67 /* list.h in Headers */,
-				33A5D97E20B990E70038CE67 /* rbtree.h in Headers */,
-				33A5D97F20B990E70038CE67 /* stringcode.h in Headers */,
 				33A5167C211E55C900754CFA /* G8HierarchicalRecognizedBlock.h in Headers */,
-				33A5D98020B990E70038CE67 /* array.h in Headers */,
-				33A5D98120B990E70038CE67 /* ptra.h in Headers */,
-				33A5D98220B990E70038CE67 /* stack.h in Headers */,
-				33A5D98320B990E70038CE67 /* heap.h in Headers */,
-				33A5D98420B990E70038CE67 /* watershed.h in Headers */,
-				33A5D98520B990E70038CE67 /* ccbord.h in Headers */,
-				33A5D98620B990E70038CE67 /* alltypes.h in Headers */,
-				33A5D98720B990E70038CE67 /* leptwin.h in Headers */,
-				33A5D98820B990E70038CE67 /* queue.h in Headers */,
-				33A5D98920B990E70038CE67 /* bmfdata.h in Headers */,
-				33A5D98A20B990E70038CE67 /* pix.h in Headers */,
-				33A5D98B20B990E70038CE67 /* arrayaccess.h in Headers */,
-				33A5D98C20B990E70038CE67 /* tiffconf.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +454,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/macos/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
@@ -772,6 +505,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/macos/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
@@ -819,6 +553,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/macos/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
@@ -970,6 +705,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/ios/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1016,6 +752,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/ios/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1120,6 +857,7 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/TesseractOCR/ios/include\"/**";
 				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
