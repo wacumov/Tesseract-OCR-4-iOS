@@ -75,14 +75,14 @@ namespace tesseract {
 
 + (void)initialize {
     if (self == [G8Tesseract self]) {
-        #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-            [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(didReceiveMemoryWarningNotification:)
-                                                         name:UIApplicationDidReceiveMemoryWarningNotification
-                                                       object:nil];
-        #elif TARGET_OS_MAC
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didReceiveMemoryWarningNotification:)
+                                                     name:UIApplicationDidReceiveMemoryWarningNotification
+                                                   object:nil];
+#elif TARGET_OS_MAC
         // TODO: Is there an equivalent?
-        #endif
+#endif
     }
 }
 
@@ -168,11 +168,11 @@ namespace tesseract {
 
         if (self.absoluteDataPath == nil) {
             // config Tesseract to search trainedData in tessdata folder of the application bundle];
-            #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-                _absoluteDataPath = [NSBundle mainBundle].bundlePath;
-            #elif TARGET_OS_MAC
-                _absoluteDataPath = [[NSBundle mainBundle] resourcePath];
-            #endif
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+            _absoluteDataPath = [NSBundle mainBundle].bundlePath;
+#elif TARGET_OS_MAC
+            _absoluteDataPath = [[NSBundle mainBundle] resourcePath];
+#endif
         }
 
         if ([[_absoluteDataPath substringFromIndex:_absoluteDataPath.length - 1] isEqual:@"/"]) {
@@ -658,8 +658,13 @@ namespace tesseract {
 }
 
 - (BOOL)isEngineConfigured {
-
-    return _tesseract != nullptr;
+    if (_tesseract != nullptr) {
+        id version = @(tesseract::TessBaseAPI::Version());
+        NSLog(@"Engine is configured. Version = %@", version);
+        return YES;
+    }
+    NSLog(@"Engine is not configured!");
+    return NO;
 }
 
 #pragma mark - Result fetching
@@ -763,15 +768,15 @@ namespace tesseract {
         iterator->BoundingBox(level, &x1, &y1, &x2, &y2); // left top right bottom
 
         // TODO: Maybe it needs to be thresholded image in some cases?
-        #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
         CGFloat y = y1;
-        #elif TARGET_OS_MAC
+#elif TARGET_OS_MAC
         CGImage *cgImage = [self.image CGImageForProposedRect: nil context: nil hints: nil];
         CGFloat imgHeight = (CGFloat)CGImageGetHeight(cgImage);
         // This is for AppKit (macOS) because coordinate system starts in bottom left as
         // opposed to top left for UIKit
         CGFloat y = (imgHeight - y1) - (y2 - y1);
-        #endif
+#endif
 
         CGFloat x = x1;
         CGFloat width = x2 - x1;
@@ -792,48 +797,48 @@ namespace tesseract {
 }
 
 - (G8HierarchicalRecognizedBlock *)hierarchicalBlockFromIterator:(tesseract::ResultIterator *)iterator
-									   iteratorLevel:(G8PageIteratorLevel)iteratorLevel {
+                                                   iteratorLevel:(G8PageIteratorLevel)iteratorLevel {
 
-	G8HierarchicalRecognizedBlock* block = [[G8HierarchicalRecognizedBlock alloc] initWithBlock:[self blockFromIterator:iterator iteratorLevel:iteratorLevel]];
+    G8HierarchicalRecognizedBlock* block = [[G8HierarchicalRecognizedBlock alloc] initWithBlock:[self blockFromIterator:iterator iteratorLevel:iteratorLevel]];
 
-	if (iteratorLevel == G8PageIteratorLevelWord) {
-		bool isBold;
-		bool isItalic;
-		bool isUnderlined;
-		bool isMonospace;
-		bool isSerif;
-		bool isSmallcaps;
-		int pointsize;
-		int fontId;
-		
-		iterator->WordFontAttributes(&isBold, &isItalic, &isUnderlined, &isMonospace, &isSerif, &isSmallcaps, &pointsize, &fontId);
-		
-		block.isFromDict = iterator->WordIsFromDictionary();
-		block.isNumeric = iterator->WordIsNumeric();
-		block.isBold = isBold;
-		block.isItalic = isItalic;
-	} else if (iteratorLevel == G8PageIteratorLevelSymbol) {
-		// get character choices
-		NSMutableArray *choices = [NSMutableArray array];
-		
-		tesseract::ChoiceIterator choiceIterator(*iterator);
-		do {
-			const char *choiceWord = choiceIterator.GetUTF8Text();
-			if (choiceWord != NULL) {
-				NSString *text = [NSString stringWithUTF8String:choiceWord];
-				CGFloat confidence = choiceIterator.Confidence();
-				
-				G8RecognizedBlock *choiceBlock = [[G8RecognizedBlock alloc] initWithText:text
-																			 boundingBox:block.boundingBox
-																			  confidence:confidence
-																				   level:G8PageIteratorLevelSymbol];
-				[choices addObject:choiceBlock];
-			}
-		} while (choiceIterator.Next());
-		
-		block.characterChoices = [choices copy];
-	}
-	return block;
+    if (iteratorLevel == G8PageIteratorLevelWord) {
+        bool isBold;
+        bool isItalic;
+        bool isUnderlined;
+        bool isMonospace;
+        bool isSerif;
+        bool isSmallcaps;
+        int pointsize;
+        int fontId;
+
+        iterator->WordFontAttributes(&isBold, &isItalic, &isUnderlined, &isMonospace, &isSerif, &isSmallcaps, &pointsize, &fontId);
+
+        block.isFromDict = iterator->WordIsFromDictionary();
+        block.isNumeric = iterator->WordIsNumeric();
+        block.isBold = isBold;
+        block.isItalic = isItalic;
+    } else if (iteratorLevel == G8PageIteratorLevelSymbol) {
+        // get character choices
+        NSMutableArray *choices = [NSMutableArray array];
+
+        tesseract::ChoiceIterator choiceIterator(*iterator);
+        do {
+            const char *choiceWord = choiceIterator.GetUTF8Text();
+            if (choiceWord != NULL) {
+                NSString *text = [NSString stringWithUTF8String:choiceWord];
+                CGFloat confidence = choiceIterator.Confidence();
+
+                G8RecognizedBlock *choiceBlock = [[G8RecognizedBlock alloc] initWithText:text
+                                                                             boundingBox:block.boundingBox
+                                                                              confidence:confidence
+                                                                                   level:G8PageIteratorLevelSymbol];
+                [choices addObject:choiceBlock];
+            }
+        } while (choiceIterator.Next());
+
+        block.characterChoices = [choices copy];
+    }
+    return block;
 }
 
 - (NSArray *)characterChoices
@@ -874,62 +879,62 @@ namespace tesseract {
 }
 
 - (NSArray *) recognizedHierarchicalBlocksByIteratorLevel:(G8PageIteratorLevel)pageIteratorLevel {
-	if (!self.engineConfigured) {
-		return nil;
-	}
-	
-	tesseract::ResultIterator *resultIterator = _tesseract->GetIterator();
-	
-	NSArray *blocks = [self getBlocksFromIterator:resultIterator forLevel:pageIteratorLevel highestLevel:pageIteratorLevel];
-	
-	return blocks;
+    if (!self.engineConfigured) {
+        return nil;
+    }
+
+    tesseract::ResultIterator *resultIterator = _tesseract->GetIterator();
+
+    NSArray *blocks = [self getBlocksFromIterator:resultIterator forLevel:pageIteratorLevel highestLevel:pageIteratorLevel];
+
+    return blocks;
 }
 
 -(NSArray*) getBlocksFromIterator:(tesseract::ResultIterator*)resultIterator forLevel:(G8PageIteratorLevel)pageIteratorLevel highestLevel:(G8PageIteratorLevel)highestLevel {
-	
-	NSMutableArray *blocks = [[NSMutableArray alloc] init];
-	
-	tesseract::PageIteratorLevel level = (tesseract::PageIteratorLevel)pageIteratorLevel;
-	
-	BOOL endOfBlock = NO;
-	
-	do {
-        G8HierarchicalRecognizedBlock *block = [self hierarchicalBlockFromIterator:resultIterator iteratorLevel:pageIteratorLevel];
-		[blocks addObject:block];
-		
-		// if we are on a higher level than symbol call the getblocks function for the next deeper level
-		if (pageIteratorLevel != G8PageIteratorLevelSymbol) {
-			block.childBlocks = [self getBlocksFromIterator:resultIterator forLevel:[self getDeeperIteratorLevel:pageIteratorLevel] highestLevel:highestLevel];
-		}
 
-		// check if we are at the end of a block
-		endOfBlock = (pageIteratorLevel != highestLevel && resultIterator->IsAtFinalElement((tesseract::PageIteratorLevel)[self getHigherIteratorLevel:pageIteratorLevel], level)) || !resultIterator->Next(level);
-	
-		
-	} while (!endOfBlock);
-	
-	return blocks;
+    NSMutableArray *blocks = [[NSMutableArray alloc] init];
+
+    tesseract::PageIteratorLevel level = (tesseract::PageIteratorLevel)pageIteratorLevel;
+
+    BOOL endOfBlock = NO;
+
+    do {
+        G8HierarchicalRecognizedBlock *block = [self hierarchicalBlockFromIterator:resultIterator iteratorLevel:pageIteratorLevel];
+        [blocks addObject:block];
+
+        // if we are on a higher level than symbol call the getblocks function for the next deeper level
+        if (pageIteratorLevel != G8PageIteratorLevelSymbol) {
+            block.childBlocks = [self getBlocksFromIterator:resultIterator forLevel:[self getDeeperIteratorLevel:pageIteratorLevel] highestLevel:highestLevel];
+        }
+
+        // check if we are at the end of a block
+        endOfBlock = (pageIteratorLevel != highestLevel && resultIterator->IsAtFinalElement((tesseract::PageIteratorLevel)[self getHigherIteratorLevel:pageIteratorLevel], level)) || !resultIterator->Next(level);
+
+
+    } while (!endOfBlock);
+
+    return blocks;
 }
 
 -(G8PageIteratorLevel)getDeeperIteratorLevel:(G8PageIteratorLevel)iteratorLevel {
-	switch (iteratorLevel) {
-		case G8PageIteratorLevelBlock: return G8PageIteratorLevelParagraph;
-		case G8PageIteratorLevelParagraph: return G8PageIteratorLevelTextline;
-		case G8PageIteratorLevelTextline: return G8PageIteratorLevelWord;
-		case G8PageIteratorLevelWord: return G8PageIteratorLevelSymbol;
-		case G8PageIteratorLevelSymbol: return G8PageIteratorLevelSymbol;
-	}
+    switch (iteratorLevel) {
+        case G8PageIteratorLevelBlock: return G8PageIteratorLevelParagraph;
+        case G8PageIteratorLevelParagraph: return G8PageIteratorLevelTextline;
+        case G8PageIteratorLevelTextline: return G8PageIteratorLevelWord;
+        case G8PageIteratorLevelWord: return G8PageIteratorLevelSymbol;
+        case G8PageIteratorLevelSymbol: return G8PageIteratorLevelSymbol;
+    }
 }
 
 
 -(G8PageIteratorLevel)getHigherIteratorLevel:(G8PageIteratorLevel)iteratorLevel {
-	switch (iteratorLevel) {
-		case G8PageIteratorLevelBlock: return G8PageIteratorLevelBlock;
-		case G8PageIteratorLevelParagraph: return G8PageIteratorLevelBlock;
-		case G8PageIteratorLevelTextline: return G8PageIteratorLevelParagraph;
-		case G8PageIteratorLevelWord: return G8PageIteratorLevelTextline;
-		case G8PageIteratorLevelSymbol: return G8PageIteratorLevelWord;
-	}
+    switch (iteratorLevel) {
+        case G8PageIteratorLevelBlock: return G8PageIteratorLevelBlock;
+        case G8PageIteratorLevelParagraph: return G8PageIteratorLevelBlock;
+        case G8PageIteratorLevelTextline: return G8PageIteratorLevelParagraph;
+        case G8PageIteratorLevelWord: return G8PageIteratorLevelTextline;
+        case G8PageIteratorLevelSymbol: return G8PageIteratorLevelWord;
+    }
 }
 
 
@@ -977,10 +982,9 @@ namespace tesseract {
         return nil;
     }
 
-    tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(
-                                                                          outputbase.fileSystemRepresentation,
+    tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(outputbase.fileSystemRepresentation,
                                                                           self.absoluteDataPath.fileSystemRepresentation,
-                                                                          0.8);
+                                                                          false);
 
     // Begin producing output
     const char* kUnknownTitle = "";
@@ -1005,7 +1009,8 @@ namespace tesseract {
         NSImage *image = images[page];
         if ([image isKindOfClass:[NSImage class]]) {
             Pix *pixs = [self pixForImage:image];
-            Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
+            // Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
+            Pix *pix = pixConvertTo8(pixs, UINT8_MAX / 2);
             pixDestroy(&pixs);
 
             const char *pagename = [NSString stringWithFormat:@"page #%i", page].UTF8String;
@@ -1323,7 +1328,7 @@ namespace tesseract {
     switch (bpp) {
 
 #if 0 // BPP1 start. Uncomment this if UIImage can support 1bpp someday
-      // Just a reference for the copyBlock
+            // Just a reference for the copyBlock
         case 1:
             for (int y = 0; y < height; ++y, data += wpl, pixels += bytesPerRow) {
                 for (int x = 0; x < width; ++x) {
@@ -1346,7 +1351,7 @@ namespace tesseract {
         }
 
 #if 0 // BPP24 start. Uncomment this if UIImage can support 24bpp someday
-      // Just a reference for the copyBlock
+            // Just a reference for the copyBlock
         case 24:
             // Put the colors in the correct places in the line buffer.
             for (int y = 0; y < height; ++y, pixels += bytesPerRow) {
@@ -1362,7 +1367,7 @@ namespace tesseract {
         case 32: {
             copyBlock = ^(l_uint32 *toAddr, NSUInteger toOffset, const UInt8 *fromAddr, NSUInteger fromOffset) {
                 toAddr[toOffset] = (fromAddr[fromOffset] << 24) | (fromAddr[fromOffset + 1] << 16) |
-                                   (fromAddr[fromOffset + 2] << 8) | fromAddr[fromOffset + 3];
+                (fromAddr[fromOffset + 2] << 8) | fromAddr[fromOffset + 3];
             };
             break;
         }
@@ -1469,12 +1474,12 @@ namespace tesseract {
 #elif TARGET_OS_MAC
 - (Pix *)pixForImage:(NSImage *)image
 {
-    NSInteger width = 0;
-    NSInteger height = 0;
+    l_int32 width = 0;
+    l_int32 height = 0;
 
     for (NSImageRep * imageRep in [image representations]) {
-        if ([imageRep pixelsWide] > width) { width = [imageRep pixelsWide]; }
-        if ([imageRep pixelsHigh] > height) { height = [imageRep pixelsHigh]; }
+        if ([imageRep pixelsWide] > width) { width = (l_int32)[imageRep pixelsWide]; }
+        if ([imageRep pixelsHigh] > height) { height = (l_int32)[imageRep pixelsHigh]; }
         // Representations with both width and height of 0 seem to be problematic,
         // specifically on macOS, so we just remove them.
         // TODO: Maybe this could be done in setEngineImage?
