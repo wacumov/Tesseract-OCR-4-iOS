@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TesseractOCR.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Tests-iOS/Tests-iOS.xcodeproj">
    </FileRef>
    <FileRef
