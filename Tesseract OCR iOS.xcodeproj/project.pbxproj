@@ -242,7 +242,7 @@
 		333B8E9F2095CF7C0084EE39 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
 		333B8EA02095CF7C0084EE39 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		333B8EA12095CF7C0084EE39 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblept.a; sourceTree = "<group>"; };
-		334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCRmacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8HierarchicalRecognizedBlock.h; sourceTree = "<group>"; };
 		33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8HierarchicalRecognizedBlock.m; sourceTree = "<group>"; };
 		33A5D6C720B983690038CE67 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -646,7 +646,7 @@
 			children = (
 				64A0292F17307C1D002B12E7 /* TesseractOCR */,
 				64F74CCB172FD75F0068E657 /* Frameworks */,
-				334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */,
+				334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */,
 				33A5D6C720B983690038CE67 /* TesseractOCR.framework */,
 			);
 			sourceTree = "<group>";
@@ -836,7 +836,7 @@
 			);
 			name = TesseractOCRmacOS;
 			productName = "TesseractOCR-Framework";
-			productReference = 334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */;
+			productReference = 334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		73C0A77B1A592C2B00D823D4 /* TesseractOCR */ = {
@@ -1009,7 +1009,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1059,7 +1059,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1106,7 +1106,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
