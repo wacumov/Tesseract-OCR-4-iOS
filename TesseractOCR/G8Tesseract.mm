@@ -969,7 +969,7 @@ namespace tesseract {
     return nil;
 }
 
-bool ProcessPage(tesseract::TessBaseAPI *tesseract_,
+bool ProcessPage(tesseract::TessBaseAPI *tesseract_, ETEXT_DESC *monitor,
                  Pix* pix, int page_index, const char* filename,
                  const char* retry_config, int timeout_millisec,
                  tesseract::TessResultRenderer* renderer) {
@@ -984,8 +984,8 @@ bool ProcessPage(tesseract::TessBaseAPI *tesseract_,
     //    monitor.set_deadline_msecs(timeout_millisec);
 
     // Now run the main recognition.
-    // failed = tesseract_->Recognize(&monitor) < 0;
-    failed = tesseract_->Recognize(nullptr) < 0;
+    failed = tesseract_->Recognize(monitor) < 0;
+    // failed = tesseract_->Recognize(nullptr) < 0;
 
     Pix* page_pix = tesseract_->GetThresholdedImage();
     pixWrite("tessinput.tif", page_pix, IFF_TIFF_G4);
@@ -1052,9 +1052,20 @@ bool ProcessPage(tesseract::TessBaseAPI *tesseract_,
             Pix *pix = pixConvertTo8(pixs, UINT8_MAX / 2);
             pixDestroy(&pixs);
 
+            if (self.maximumRecognitionTime > FLT_EPSILON) {
+                _monitor->set_deadline_msecs((int32_t)(self.maximumRecognitionTime * 1000));
+            }
+
             const char *pagename = [NSString stringWithFormat:@"page #%i", page].UTF8String;
             //            result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
-            result = ProcessPage(_tesseract, pix, page, pagename, NULL, 0, renderer);
+            result = ProcessPage(_tesseract,
+                                 _monitor,
+                                 pix,
+                                 page,
+                                 pagename,
+                                 NULL,
+                                 0,
+                                 renderer);
             pixDestroy(&pix);
         }
 #endif
