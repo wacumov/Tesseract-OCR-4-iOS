@@ -41,10 +41,10 @@
 #import "renderer.h"
 
 // Hack for diffent naming of elsewise simialar classes
-#if TARGET_OS_MAC
-#define XXImage NSImage
-#else
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 #define XXImage UIImage
+#else
+#define XXImage NSImage
 #endif
 
 NSInteger const kG8DefaultResolution = 72;
