@@ -488,4 +488,6 @@ typedef void(^G8AlternativeTesseractOCRResultBlock_t)(struct G8AlternativeTesser
 
 - (void)forEachWord:(G8AlternativeTesseractOCRResultBlock_t)block;
 
+@property (readonly, assign) CGSize imageSize;
+
 @end
