@@ -977,15 +977,7 @@ bool ProcessPage(tesseract::TessBaseAPI *tesseract_, ETEXT_DESC *monitor,
     tesseract_->SetImage(pix);
     bool failed = false;
 
-    // Running with a timeout.
-    //    ETEXT_DESC monitor;
-    //    monitor.cancel = nullptr;
-    //    monitor.cancel_this = nullptr;
-    //    monitor.set_deadline_msecs(timeout_millisec);
-
-    // Now run the main recognition.
     failed = tesseract_->Recognize(monitor) < 0;
-    // failed = tesseract_->Recognize(nullptr) < 0;
 
     Pix* page_pix = tesseract_->GetThresholdedImage();
     pixWrite("tessinput.tif", page_pix, IFF_TIFF_G4);
@@ -1032,6 +1024,7 @@ bool ProcessPage(tesseract::TessBaseAPI *tesseract_, ETEXT_DESC *monitor,
     }
 
     bool result = YES;
+
     for (int page = 0; page < images.count && result; page++) {
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
         UIImage *image = images[page];
@@ -1057,16 +1050,23 @@ bool ProcessPage(tesseract::TessBaseAPI *tesseract_, ETEXT_DESC *monitor,
             }
 
             const char *pagename = [NSString stringWithFormat:@"page #%i", page].UTF8String;
-            //            result = _tesseract->ProcessPage(pix, page, pagename, NULL, 0, renderer);
-            result = ProcessPage(_tesseract,
-                                 _monitor,
-                                 pix,
-                                 page,
-                                 pagename,
-                                 NULL,
-                                 0,
-                                 renderer);
+
+            _tesseract->SetInputName(pagename);
+            _tesseract->SetImage(pix);
+            bool failed = false;
+
+            failed = _tesseract->Recognize(_monitor) < 0;
+
+            //            Pix* page_pix = _tesseract->GetThresholdedImage();
+            //            pixWrite("tessinput.tif", page_pix, IFF_TIFF_G4);
+
+            if (renderer && !failed) {
+                failed = !renderer->AddImage(_tesseract);
+            }
+
             pixDestroy(&pix);
+
+
         }
 #endif
     }
