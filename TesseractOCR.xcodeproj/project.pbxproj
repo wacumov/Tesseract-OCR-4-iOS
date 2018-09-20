@@ -141,18 +141,18 @@
 			isa = PBXGroup;
 			children = (
 				73C0A7B11A594A8000D823D4 /* TesseractOCR.h */,
+				418997A71A42CC8B00D6477C /* G8Constants.h */,
+				33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */,
+				33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */,
+				41A95DEC1A3AFBF30085093C /* G8RecognitionOperation.h */,
+				41A95DED1A3AFBF30085093C /* G8RecognitionOperation.m */,
+				41B41A4F1A42ED7600D46246 /* G8RecognizedBlock.h */,
+				41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */,
 				64A029D617307CD0002B12E7 /* G8Tesseract.h */,
 				64A029D717307CD0002B12E7 /* G8Tesseract.mm */,
 				4141211F1A4C578800583ED4 /* G8TesseractDelegate.h */,
-				41B41A4F1A42ED7600D46246 /* G8RecognizedBlock.h */,
-				41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */,
-				41A95DEC1A3AFBF30085093C /* G8RecognitionOperation.h */,
-				41A95DED1A3AFBF30085093C /* G8RecognitionOperation.m */,
 				41A95DE81A3AF39B0085093C /* G8TesseractParameters.h */,
 				41A95DE91A3AF39B0085093C /* G8TesseractParameters.m */,
-				33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */,
-				33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */,
-				418997A71A42CC8B00D6477C /* G8Constants.h */,
 				64A0293017307C1D002B12E7 /* Supporting Files */,
 			);
 			path = TesseractOCR;
@@ -297,8 +297,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */,
 				3387587B206A6A7F006E5B96 /* TesseractOCR-macOS */,
+				73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */,
 			);
 		};
 /* End PBXProject section */
