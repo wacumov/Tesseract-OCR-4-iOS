@@ -512,7 +512,6 @@ namespace tesseract {
 #endif
 
 - (void)setEngineSourceResolution:(NSUInteger)sourceResolution {
-    
     if (self.isEngineConfigured) {
         _tesseract->SetSourceResolution((int)sourceResolution);
     }
@@ -797,6 +796,52 @@ namespace tesseract {
     return block;
 }
 
+- (void)forEachWord:(G8AlternativeTesseractOCRResultBlock_t)block {
+    //    hxAssert0(block);
+
+    // https://code.google.com/p/tesseract-ocr/wiki/APIExample
+    tesseract::ResultIterator* iterator = _tesseract->GetIterator();
+    tesseract::PageIteratorLevel level = tesseract::RIL_WORD;
+    if (iterator != 0) {
+        do {
+            const char *word = iterator->GetUTF8Text(level);
+            if (word) {
+                if (strlen(word)) {
+                    G8AlternativeTesseractOCRResult result;
+
+                    NSString *text = [NSString stringWithUTF8String:word];
+                    result.word = text;
+
+                    int x1, y1, x2, y2;
+                    iterator->BoundingBox(level, &x1, &y1, &x2, &y2);
+                    result.rect = CGRectMake(x1, self.imageSize.height - y2, x2 - x1, y2 - y1);
+
+                    iterator->Baseline(level, &x1, &y1, &x2, &y2);
+                    result.baseline = self.imageSize.height - ((y1 + y2) / 2.);
+
+                    CGFloat confidence = iterator->Confidence(level);
+                    result.confidence = confidence;
+
+                    iterator->WordFontAttributes(&result.bold,
+                                                 &result.italic,
+                                                 &result.underlined,
+                                                 &result.monospace,
+                                                 &result.serif,
+                                                 &result.smallcaps,
+                                                 &result.pointsize,
+                                                 &result.font_id);
+
+                    if(block) {
+                        block(result);
+                    }
+                }
+                delete[] word;
+            }
+        } while (iterator->Next(level));
+    }
+    delete iterator;
+}
+
 - (G8HierarchicalRecognizedBlock *)hierarchicalBlockFromIterator:(tesseract::ResultIterator *)iterator
                                                    iteratorLevel:(G8PageIteratorLevel)iteratorLevel {
     
@@ -1014,15 +1059,15 @@ namespace tesseract {
             bool failed = false;
             
             failed = _tesseract->Recognize(_monitor) < 0;
-            
+
+#if 0
             // Debug
-            if (1) {
-                Pix* page_pix = _tesseract->GetThresholdedImage();
-                const char *fileName = [NSString stringWithFormat:@"/Users/dirk/Downloads/%@.tif", NSUUID.UUID.UUIDString].UTF8String;
-                pixWrite(fileName, page_pix, IFF_TIFF_G4);
-                pixDestroy(&page_pix);
-            }
-            
+            Pix* page_pix = _tesseract->GetThresholdedImage();
+            const char *fileName = [NSString stringWithFormat:@"/Users/dirk/Downloads/%@.tif", NSUUID.UUID.UUIDString].UTF8String;
+            pixWrite(fileName, page_pix, IFF_TIFF_G4);
+            pixDestroy(&page_pix);
+#endif
+
             if (renderer && !failed) {
                 failed = !renderer->AddImage(_tesseract);
             }
@@ -1149,7 +1194,6 @@ namespace tesseract {
 
 #endif
 
-
 #pragma mark - Other functions
 
 - (BOOL)recognize
@@ -1177,8 +1221,7 @@ namespace tesseract {
     return returnCode == 0 && self.recognized;
 }
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-- (UIImage *)thresholdedImage
+- (XXImage *)thresholdedImage
 {
     if (!self.isEngineConfigured) {
         return nil;
@@ -1190,20 +1233,6 @@ namespace tesseract {
     
     return [self imageFromPix:pix];
 }
-#elif TARGET_OS_MAC
-- (NSImage *)thresholdedImage
-{
-    if (!self.isEngineConfigured) {
-        return nil;
-    }
-    Pix *pixs = _tesseract->GetThresholdedImage();
-    Pix *pix = pixUnpackBinary(pixs, 32, 0);
-    
-    pixDestroy(&pixs);
-    
-    return [self imageFromPix:pix];
-}
-#endif
 
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 - (UIImage *)imageFromPix:(Pix *)pix
