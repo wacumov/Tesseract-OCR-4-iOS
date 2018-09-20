@@ -117,7 +117,7 @@ namespace tesseract {
 
 - (instancetype)initWithLanguage:(NSString*)language
 {
-    return [self initWithLanguage:language configDictionary:nil configFileNames:nil cachesRelatedDataPath:nil engineMode:G8OCREngineModeTesseractOnly];
+    return [self initWithLanguage:language configDictionary:nil configFileNames:nil cachesRelatedDataPath:nil engineMode:G8OCREngineModeLSTMOnly];
 }
 
 - (instancetype)initWithLanguage:(NSString *)language engineMode:(G8OCREngineMode)engineMode
@@ -261,7 +261,7 @@ namespace tesseract {
     } else {
         NSLog(@"ERROR! Can't init Tesseract engine.");
         _language = nil;
-        _engineMode = G8OCREngineModeTesseractOnly;
+        _engineMode = G8OCREngineModeLSTMOnly;
         [self freeTesseract];
     }
     
