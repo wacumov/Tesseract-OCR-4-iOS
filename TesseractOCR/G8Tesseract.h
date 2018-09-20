@@ -176,7 +176,7 @@ extern NSInteger const kG8MaxCredibleResolution;
  *                  the engine is not properly configured.
  */
 - (NSData *)recognizedPDFForImages:(NSArray*)images
-            outputbase:(NSString*)outputbase;
+                        outputbase:(NSString*)outputbase;
 
 /**
  *  Run Tesseract's page analysis on the target image.
