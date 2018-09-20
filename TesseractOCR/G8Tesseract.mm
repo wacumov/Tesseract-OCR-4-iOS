@@ -509,6 +509,32 @@ namespace tesseract {
     [self resetFlags];
 }
 
+- (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep {
+    self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
+
+    //    NSSize _imageSize =  NSMakeSize(imageRep.pixelsWide, imageRep.pixelsHigh);
+    //    self.size = _imageSize;
+    //
+    //    XLogInfo(@"OCR Size %@", NSStringFromSize(_imageSize));
+
+    unsigned char *imageData = imageRep.bitmapData;
+    int bytes_per_line = (int)imageRep.bytesPerRow;
+    int bytes_per_pixel = (int)imageRep.bitsPerPixel / 8;
+    int bits_per_pixel = (int)imageRep.bitsPerPixel; //bytes_per_pixel == 0 ? 1 : bytes_per_pixel * 8;
+
+    _tesseract->SetImage((const unsigned char*)imageData,
+                         bytes_per_line * 8 / bits_per_pixel,
+                         self.imageSize.height,
+                         bytes_per_pixel,
+                         bytes_per_line);
+
+    NSImage *image = [[NSImage alloc] initWithSize:self.imageSize];
+    [image addRepresentation:imageRep];
+    _image = image;
+
+    [self resetFlags];
+}
+
 #endif
 
 - (void)setEngineSourceResolution:(NSUInteger)sourceResolution {
