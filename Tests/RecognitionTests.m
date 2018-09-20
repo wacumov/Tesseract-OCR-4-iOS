@@ -443,17 +443,17 @@ describe(@"PDF", ^{
         return PDF;
     };
 
-    it(@"Should generate well scanned page", ^{
-        #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-        UIImage *wellScannedPageImg = [UIImage imageWithName:@"well_scanned_page.png"];
-        #elif TARGET_OS_MAC
-        NSImage *wellScannedPageImg = [NSImage imageWithName:@"well_scanned_page.png"];
-        #endif
-
-        NSData *pdfData = recognizedPDFForImages(@[wellScannedPageImg]);
-
-        [[theValue([pdfData g8_isEqualToData:samplePDFDataFromFile(@"well_scanned_page.pdf")]) should] beYes];
-    });
+    //    it(@"Should generate well scanned page", ^{
+    //        #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+    //        UIImage *wellScannedPageImg = [UIImage imageWithName:@"well_scanned_page.png"];
+    //        #elif TARGET_OS_MAC
+    //        NSImage *wellScannedPageImg = [NSImage imageWithName:@"well_scanned_page.png"];
+    //        #endif
+    //
+    //        NSData *pdfData = recognizedPDFForImages(@[wellScannedPageImg]);
+    //
+    //        [[theValue([pdfData g8_isEqualToData:samplePDFDataFromFile(@"well_scanned_page.pdf")]) should] beYes];
+    //    });
 
     context(@"Should generate empty page for", ^{
         it(@"nil array", ^{

@@ -23,6 +23,8 @@
 		33E40C9420B9816D0055645B /* NSData+G8Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E40C9120B9816D0055645B /* NSData+G8Equal.m */; };
 		33E40C9720B981790055645B /* Defaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E40C9520B981790055645B /* Defaults.m */; };
 		33FBE82620B982E000B5A642 /* NSImage+G8Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FBE82420B982E000B5A642 /* NSImage+G8Equal.m */; };
+		4363689E21539F5F00B1B719 /* TesseractOCR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4363689D21539F5200B1B719 /* TesseractOCR.framework */; };
+		4363689F21539F5F00B1B719 /* TesseractOCR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4363689D21539F5200B1B719 /* TesseractOCR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6D4A6057A015668DB083CE7 /* libPods-Tests-macOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ECC0E3D92C9F6A94C909295 /* libPods-Tests-macOSTests.a */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,42 @@
 			remoteGlobalIDString = 334A6A0F20B8AA4400AAA630;
 			remoteInfo = "Tests-macOS";
 		};
+		4363689A21539F5200B1B719 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 33A5D6C720B983690038CE67;
+			remoteInfo = "TesseractOCR-iOS";
+		};
+		4363689C21539F5200B1B719 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 334A67C820AF6BEC00AAA630;
+			remoteInfo = "TesseractOCR-macOS";
+		};
+		436368A021539F5F00B1B719 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3387587B206A6A7F006E5B96;
+			remoteInfo = "TesseractOCR-macOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		436368A221539F6000B1B719 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4363689F21539F5F00B1B719 /* TesseractOCR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0ECC0E3D92C9F6A94C909295 /* libPods-Tests-macOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-macOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +105,7 @@
 		33FBE82420B982E000B5A642 /* NSImage+G8Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+G8Equal.m"; sourceTree = "<group>"; };
 		33FBE82520B982E000B5A642 /* NSImage+G8Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+G8Equal.h"; sourceTree = "<group>"; };
 		436368192152746B00B1B719 /* TesseractOCR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TesseractOCR.framework; path = "../../../../Library/Developer/Xcode/DerivedData/TesseractOCR-avmfeekngyoktofmtwaqssohclwx/Build/Products/Debug/TesseractOCR.framework"; sourceTree = "<group>"; };
+		4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TesseractOCR.xcodeproj; path = ../TesseractOCR.xcodeproj; sourceTree = "<group>"; };
 		5EDAFAF185CA24EB201B66A4 /* Pods-Tests-macOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests-macOSTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Tests-macOSTests/Pods-Tests-macOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4363689E21539F5F00B1B719 /* TesseractOCR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +132,7 @@
 		334A6A0720B8AA4300AAA630 = {
 			isa = PBXGroup;
 			children = (
+				4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */,
 				334A6A1220B8AA4400AAA630 /* Tests-macOS */,
 				334A6A2C20B8AAA600AAA630 /* Tests-macOSTests */,
 				334A6A1120B8AA4400AAA630 /* Products */,
@@ -175,6 +215,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		4363689621539F5200B1B719 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4363689B21539F5200B1B719 /* TesseractOCR.framework */,
+				4363689D21539F5200B1B719 /* TesseractOCR.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A7F9CC9531F50B19AF71EBDB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,10 +243,12 @@
 				334A6A0C20B8AA4400AAA630 /* Sources */,
 				334A6A0D20B8AA4400AAA630 /* Frameworks */,
 				334A6A0E20B8AA4400AAA630 /* Resources */,
+				436368A221539F6000B1B719 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				436368A121539F5F00B1B719 /* PBXTargetDependency */,
 			);
 			name = "Tests-macOS";
 			productName = "Tests-macOS";
@@ -252,6 +303,12 @@
 			mainGroup = 334A6A0720B8AA4300AAA630;
 			productRefGroup = 334A6A1120B8AA4400AAA630 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4363689621539F5200B1B719 /* Products */;
+					ProjectRef = 4363689521539F5200B1B719 /* TesseractOCR.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				334A6A0F20B8AA4400AAA630 /* Tests-macOS */,
@@ -259,6 +316,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4363689B21539F5200B1B719 /* TesseractOCR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TesseractOCR.framework;
+			remoteRef = 4363689A21539F5200B1B719 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4363689D21539F5200B1B719 /* TesseractOCR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = TesseractOCR.framework;
+			remoteRef = 4363689C21539F5200B1B719 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		334A6A0E20B8AA4400AAA630 /* Resources */ = {
@@ -336,6 +410,11 @@
 			isa = PBXTargetDependency;
 			target = 334A6A0F20B8AA4400AAA630 /* Tests-macOS */;
 			targetProxy = 334A6A3020B8AAA600AAA630 /* PBXContainerItemProxy */;
+		};
+		436368A121539F5F00B1B719 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "TesseractOCR-macOS";
+			targetProxy = 436368A021539F5F00B1B719 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
