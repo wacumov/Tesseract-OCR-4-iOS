@@ -204,19 +204,21 @@ cleanimages :
 
 .PHONY : cleanlept
 cleanlept :
-	for folder in $(realpath $(libleptfolders_all) ); do \
-		cd $$folder; \
-		$(MAKE) clean; \
-	done ;
+	cd $(LEPTON_SRC) ; \
+	git clean -fdX
+	# for folder in $(realpath $(libleptfolders_all) ); do \
+	# 	cd $$folder; \
+	# 	$(MAKE) clean; \
+	# done ;
 
 .PHONY : cleantess
 cleantess :
-    cd $TESSERACT_SRC
-    git clean -fdX
-    #for folder in $(realpath $(libtessfolders_all) ); do \
-    #		cd $$folder; \
-    #		$(MAKE) clean; \
-    #	done ;
+	cd $(TESSERACT_SRC) ; \
+	git clean -fdX
+    # for folder in $(realpath $(libtessfolders_all) ); do \
+    # 	cd $$folder; \
+    # 	$(MAKE) clean; \
+    # done ;
 
 .PHONY : mostlycleanimages
 mostlycleanimages :

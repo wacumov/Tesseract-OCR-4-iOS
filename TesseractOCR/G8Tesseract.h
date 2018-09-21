@@ -188,8 +188,7 @@ typedef void(^G8AlternativeTesseractOCRResultBlock_t)(struct G8AlternativeTesser
  *  @return NSData  representing output PDF file or nil if error occured or
  *                  the engine is not properly configured.
  */
-- (NSData *)recognizedPDFForImages:(NSArray*)images
-                        outputbase:(NSString*)outputbase;
+- (NSData *)recognizedPDFForImages:(NSArray*)images;
 
 /**
  *  Run Tesseract's page analysis on the target image.
