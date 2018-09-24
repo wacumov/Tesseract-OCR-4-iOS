@@ -705,7 +705,7 @@
 					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
 					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
 				);
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -756,7 +756,7 @@
 					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
 					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
 				);
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -866,7 +866,7 @@
 					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
 					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
 				);
-				MACH_O_TYPE = mh_dylib;
+				MACH_O_TYPE = staticlib;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
