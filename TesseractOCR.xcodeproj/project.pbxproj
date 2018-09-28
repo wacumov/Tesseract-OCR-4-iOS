@@ -11,7 +11,7 @@
 		333B8E482093C7A80084EE39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E94E74207540260005399D /* libz.tbd */; };
 		3387587E206A6A7F006E5B96 /* G8RecognizedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */; };
 		33875880206A6A7F006E5B96 /* G8RecognitionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A95DED1A3AFBF30085093C /* G8RecognitionOperation.m */; };
-		33875881206A6A7F006E5B96 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; };
+		33875881206A6A7F006E5B96 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		33875882206A6A7F006E5B96 /* G8TesseractParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A95DE91A3AF39B0085093C /* G8TesseractParameters.m */; };
 		3387588D206A6A7F006E5B96 /* G8Tesseract.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A029D617307CD0002B12E7 /* G8Tesseract.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33875892206A6A7F006E5B96 /* G8TesseractParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 41A95DE81A3AF39B0085093C /* G8TesseractParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,7 +35,7 @@
 		33A5D99520BA2E380038CE67 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D99020BA2E370038CE67 /* libpng.a */; };
 		33A5D99620BA2E380038CE67 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D99120BA2E380038CE67 /* libtiff.a */; };
 		73C0A7961A5932C400D823D4 /* G8Tesseract.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A029D617307CD0002B12E7 /* G8Tesseract.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		73C0A7971A5932C800D823D4 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; };
+		73C0A7971A5932C800D823D4 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; settings = {COMPILER_FLAGS = "-w"; }; };
 		73C0A7981A5932CC00D823D4 /* G8TesseractDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4141211F1A4C578800583ED4 /* G8TesseractDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C0A7991A5932D200D823D4 /* G8RecognizedBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 41B41A4F1A42ED7600D46246 /* G8RecognizedBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C0A79A1A5932D700D823D4 /* G8RecognizedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */; };
