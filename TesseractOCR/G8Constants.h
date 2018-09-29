@@ -81,21 +81,18 @@ typedef NS_ENUM(NSUInteger, G8PageSegmentationMode){
 /**
  * When Tesseract/Cube is initialized we can choose to instantiate/load/run
  * only the Tesseract part, only the Cube part or both along with the combiner.
+
+ 0    Legacy engine only.
+ 1    Neural nets LSTM engine only.
+ 2    Legacy + LSTM engines.
+ 3    Default, based on what is available.
+
  */
 typedef NS_ENUM(NSUInteger, G8OCREngineMode){
-    /**
-     *  Run Tesseract only - fastest
-     */
-    G8OCREngineModeTesseractOnly,
-    /**
-     *  Run Cube only - better accuracy, but slower
-     */
-    G8OCREngineModeCubeOnly,
-    /**
-     *  Run both and combine results - best accuracy
-     */
-    G8OCREngineModeTesseractCubeCombined,
-//    G8OCREngineModeDefault,
+    G8OCREngineModeLegacyOnly = 0,
+    G8OCREngineModeLSTMOnly,
+    G8OCREngineModeLegacyLSTMCombined,
+    G8OCREngineModeDefault,
 };
 
 /**

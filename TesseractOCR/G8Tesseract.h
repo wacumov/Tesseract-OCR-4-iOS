@@ -32,6 +32,17 @@ extern NSInteger const kG8MinCredibleResolution;
  */
 extern NSInteger const kG8MaxCredibleResolution;
 
+struct G8AlternativeTesseractOCRResult {
+    CGRect rect;
+    bool bold, italic, underlined, monospace, serif, smallcaps;
+    int pointsize, font_id;
+    CGFloat confidence;
+    CGFloat baseline;
+    NSString *word;
+};
+
+typedef void(^G8AlternativeTesseractOCRResultBlock_t)(struct G8AlternativeTesseractOCRResult word);
+
 /**
  *  `G8Tesseract` encapsulates the Tesseract library and provides properties
  *  and methods for performing text recognition and analysis on a target image.
@@ -119,6 +130,8 @@ extern NSInteger const kG8MaxCredibleResolution;
 @property (nonatomic, strong) UIImage *image;
 #elif TARGET_OS_MAC
 @property (nonatomic, strong) NSImage *image;
+
+- (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep;
 #endif
 
 /**
@@ -175,8 +188,7 @@ extern NSInteger const kG8MaxCredibleResolution;
  *  @return NSData  representing output PDF file or nil if error occured or
  *                  the engine is not properly configured.
  */
-- (NSData *)recognizedPDFForImages:(NSArray*)images
-            outputbase:(NSString*)outputbase;
+- (NSData *)recognizedPDFForImages:(NSArray*)images;
 
 /**
  *  Run Tesseract's page analysis on the target image.
@@ -472,5 +484,11 @@ extern NSInteger const kG8MaxCredibleResolution;
  *  @return Whether or not the recognition completed successfully.
  */
 - (BOOL)recognize;
+
+//
+
+- (void)forEachWord:(G8AlternativeTesseractOCRResultBlock_t)block;
+
+@property (readonly, assign) CGSize imageSize;
 
 @end

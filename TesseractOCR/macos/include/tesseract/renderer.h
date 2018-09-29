@@ -187,7 +187,7 @@ class TESS_API TessPDFRenderer : public TessResultRenderer {
  public:
   // datadir is the location of the TESSDATA. We need it because
   // we load a custom PDF font from this location.
-  TessPDFRenderer(const char* outputbase, const char* datadir, bool textonly = false);
+  TessPDFRenderer(const char* outputbase, const char* datadir, bool textonly = false, int jpg_quality = 85);
 
  protected:
   virtual bool BeginDocumentHandler();
@@ -205,6 +205,7 @@ class TESS_API TessPDFRenderer : public TessResultRenderer {
   GenericVector<long int> pages_;    // object number for every /Page object
   std::string datadir_;              // where to find the custom font
   bool textonly_;                    // skip images if set
+  int jpg_quality_;                  // set JPEG quality
   // Bookkeeping only. DIY = Do It Yourself.
   void AppendPDFObjectDIY(size_t objectsize);
   // Bookkeeping + emit data.
@@ -212,8 +213,8 @@ class TESS_API TessPDFRenderer : public TessResultRenderer {
   // Create the /Contents object for an entire page.
   char* GetPDFTextObjects(TessBaseAPI* api, double width, double height);
   // Turn an image into a PDF object. Only transcode if we have to.
-  static bool imageToPDFObj(Pix *pix, char *filename, long int objnum,
-                          char **pdf_object, long int *pdf_object_size);
+  static bool imageToPDFObj(Pix* pix, const char* filename, long int objnum,
+                          char** pdf_object, long int* pdf_object_size, int jpg_quality);
 };
 
 
