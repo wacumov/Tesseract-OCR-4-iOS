@@ -510,12 +510,16 @@ namespace tesseract {
 }
 
 - (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep {
-    self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
+    if (!imageRep) {
+        NSLog(@"ERROR: No image rep");
+        return;
+    }
 
-    //    NSSize _imageSize =  NSMakeSize(imageRep.pixelsWide, imageRep.pixelsHigh);
-    //    self.size = _imageSize;
-    //
-    //    XLogInfo(@"OCR Size %@", NSStringFromSize(_imageSize));
+    self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
+    if (self.imageSize.width <= 0 || self.imageSize.width <= 0) {
+        NSLog(@"ERROR: Image rep with wrong size");
+        return;
+    }
 
     unsigned char *imageData = imageRep.bitmapData;
     int bytes_per_line = (int)imageRep.bytesPerRow;
@@ -524,7 +528,7 @@ namespace tesseract {
 
     _tesseract->SetImage((const unsigned char*)imageData,
                          bytes_per_line * 8 / bits_per_pixel,
-                         self.imageSize.height,
+                         imageRep.pixelsHigh,
                          bytes_per_pixel,
                          bytes_per_line);
 
