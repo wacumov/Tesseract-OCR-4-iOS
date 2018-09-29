@@ -41,10 +41,10 @@
 #import "renderer.h"
 
 // Hack for diffent naming of elsewise simialar classes
-#if TARGET_OS_MAC
-#define XXImage NSImage
-#else
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 #define XXImage UIImage
+#else
+#define XXImage NSImage
 #endif
 
 NSInteger const kG8DefaultResolution = 72;
@@ -510,12 +510,16 @@ namespace tesseract {
 }
 
 - (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep {
-    self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
+    if (!imageRep) {
+        NSLog(@"ERROR: No image rep");
+        return;
+    }
 
-    //    NSSize _imageSize =  NSMakeSize(imageRep.pixelsWide, imageRep.pixelsHigh);
-    //    self.size = _imageSize;
-    //
-    //    XLogInfo(@"OCR Size %@", NSStringFromSize(_imageSize));
+    self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
+    if (self.imageSize.width <= 0 || self.imageSize.width <= 0) {
+        NSLog(@"ERROR: Image rep with wrong size");
+        return;
+    }
 
     unsigned char *imageData = imageRep.bitmapData;
     int bytes_per_line = (int)imageRep.bytesPerRow;
@@ -524,7 +528,7 @@ namespace tesseract {
 
     _tesseract->SetImage((const unsigned char*)imageData,
                          bytes_per_line * 8 / bits_per_pixel,
-                         self.imageSize.height,
+                         imageRep.pixelsHigh,
                          bytes_per_pixel,
                          bytes_per_line);
 
@@ -1049,11 +1053,19 @@ namespace tesseract {
 
 // outputbase is the name of the output file excluding
 // extension. For example, "/path/to/chocolate-chip-cookie-recipe"
-- (NSData *)recognizedPDFForImages:(NSArray*)images outputbase:(NSString*)outputbase {
+- (NSData *)recognizedPDFForImages:(NSArray*)images {
     if (!self.isEngineConfigured) {
         return nil;
     }
-    
+
+    NSError *error = nil;
+    NSString *tempDirPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
+    NSLog(@"Temp folder %@", tempDirPath);
+    [NSFileManager.defaultManager createDirectoryAtPath:tempDirPath withIntermediateDirectories:YES attributes:nil error:&error];
+    NSString *outputbase = [tempDirPath stringByAppendingPathComponent:@"outputbase"];
+    // TODO:2018-09-21 Check for errors
+    NSLog(@"Output base %@ and error %@", tempDirPath, error);
+
     tesseract::TessPDFRenderer *renderer = new tesseract::TessPDFRenderer(outputbase.fileSystemRepresentation,
                                                                           self.absoluteDataPath.fileSystemRepresentation,
                                                                           false);
@@ -1070,9 +1082,9 @@ namespace tesseract {
         XXImage *image = images[page];
         if ([image isKindOfClass:[XXImage class]]) {
             Pix *pixs = [self pixForImage:image];
-            // Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
+            Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
             // Pix *pix = pixConvertTo8(pixs, UINT8_MAX / 2);
-            Pix *pix = pixConvertTo32(pixs);
+           // Pix *pix = pixConvertTo32(pixs);
             pixDestroy(&pixs);
             
             if (self.maximumRecognitionTime > FLT_EPSILON) {
@@ -1082,26 +1094,23 @@ namespace tesseract {
             const char *pagename = [NSString stringWithFormat:@"page.%i", page].UTF8String;
             _tesseract->SetInputName(pagename);
             _tesseract->SetImage(pix);
-            bool failed = false;
-            
-            failed = _tesseract->Recognize(_monitor) < 0;
 
-#if 0
-            // Debug
-            Pix* page_pix = _tesseract->GetThresholdedImage();
-            const char *fileName = [NSString stringWithFormat:@"/Users/dirk/Downloads/%@.tif", NSUUID.UUID.UUIDString].UTF8String;
-            pixWrite(fileName, page_pix, IFF_TIFF_G4);
-            pixDestroy(&page_pix);
-#endif
-
-            if (renderer && !failed) {
-                failed = !renderer->AddImage(_tesseract);
+            if (_tesseract->Recognize(_monitor) != 0) {
+                NSLog(@"Failed applying OCR to image");
+                result = NO;
+            } else {
+                if (renderer) {
+                    if (renderer->AddImage(_tesseract) != 0) {
+                        NSLog(@"Failed adding image to PDF");
+                        result = NO;
+                    }
+                }
             }
             
             pixDestroy(&pix);
-            
-            if (failed) {
-                result = NO;
+
+            if (!result) {
+                break;
             }
         }
     }
@@ -1120,7 +1129,11 @@ namespace tesseract {
     renderer = nullptr;
     
     NSString *outputbaseFilePath = [outputbase stringByAppendingPathExtension:@"pdf"];
-    NSData *data = [NSData dataWithContentsOfFile:outputbaseFilePath];    
+    NSData *data = [NSData dataWithContentsOfFile:outputbaseFilePath];
+
+    // Cleanup
+    [[NSFileManager defaultManager] removeItemAtPath:outputbaseFilePath error:&error];
+    [[NSFileManager defaultManager] removeItemAtPath:tempDirPath error:&error];
     return data;
 }
 

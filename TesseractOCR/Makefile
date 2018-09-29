@@ -131,7 +131,7 @@ $(TESSERACT_SRC)/$(PLATFORM_PREFIX)/%/Makefile : $(libtessconfig) $(libleptfat)
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
 	ln -s $(LEPTON_SRC)/src/ leptonica ; \
-	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-graphics 
+	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-graphics --disable-legacy --enable-opencl=no
 
 $(libtessconfig) : $(libtessautogen)
 	cd $(@D) && ./autogen.sh 2> /dev/null
@@ -204,17 +204,21 @@ cleanimages :
 
 .PHONY : cleanlept
 cleanlept :
-	for folder in $(realpath $(libleptfolders_all) ); do \
-		cd $$folder; \
-		$(MAKE) clean; \
-	done ;
+	cd $(LEPTON_SRC) ; \
+	git clean -fdX
+	# for folder in $(realpath $(libleptfolders_all) ); do \
+	# 	cd $$folder; \
+	# 	$(MAKE) clean; \
+	# done ;
 
 .PHONY : cleantess
 cleantess :
-	for folder in $(realpath $(libtessfolders_all) ); do \
-		cd $$folder; \
-		$(MAKE) clean; \
-	done ;
+	cd $(TESSERACT_SRC) ; \
+	git clean -fdX
+    # for folder in $(realpath $(libtessfolders_all) ); do \
+    # 	cd $$folder; \
+    # 	$(MAKE) clean; \
+    # done ;
 
 .PHONY : mostlycleanimages
 mostlycleanimages :
