@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		332186882116208900494CBB /* tess_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 332186872116208900494CBB /* tess_version.h */; };
-		333B8E472093C79E0084EE39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E462093C79E0084EE39 /* libz.tbd */; };
-		333B8E482093C7A80084EE39 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E94E74207540260005399D /* libz.tbd */; };
 		3387587E206A6A7F006E5B96 /* G8RecognizedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */; };
 		33875880206A6A7F006E5B96 /* G8RecognitionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A95DED1A3AFBF30085093C /* G8RecognitionOperation.m */; };
 		33875881206A6A7F006E5B96 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; };
@@ -25,11 +23,6 @@
 		33A5167C211E55C900754CFA /* G8HierarchicalRecognizedBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		33A5167D211E55C900754CFA /* G8HierarchicalRecognizedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */; };
 		33A5167E211E55C900754CFA /* G8HierarchicalRecognizedBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */; };
-		33A5D6D320B98B730038CE67 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4D2095CE630084EE39 /* libjpeg.a */; };
-		33A5D6D420B98B730038CE67 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4C2095CE630084EE39 /* liblept.a */; };
-		33A5D6D520B98B730038CE67 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E492095CE630084EE39 /* libpng.a */; };
-		33A5D6D620B98B730038CE67 /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4A2095CE630084EE39 /* libtesseract.a */; };
-		33A5D6D720B98B730038CE67 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E4B2095CE630084EE39 /* libtiff.a */; };
 		33A5D8E420B990CD0038CE67 /* jpeglib.h in Headers */ = {isa = PBXBuildFile; fileRef = 333B8E552095CF7C0084EE39 /* jpeglib.h */; };
 		33A5D8E520B990CD0038CE67 /* jerror.h in Headers */ = {isa = PBXBuildFile; fileRef = 333B8E562095CF7C0084EE39 /* jerror.h */; };
 		33A5D8E620B990CD0038CE67 /* tiff.h in Headers */ = {isa = PBXBuildFile; fileRef = 333B8E572095CF7C0084EE39 /* tiff.h */; };
@@ -151,11 +144,18 @@
 		33A5D98A20B990E70038CE67 /* pix.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D320B98FB10038CE67 /* pix.h */; };
 		33A5D98B20B990E70038CE67 /* arrayaccess.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D420B98FB10038CE67 /* arrayaccess.h */; };
 		33A5D98C20B990E70038CE67 /* tiffconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 33A5D8D520B98FB10038CE67 /* tiffconf.h */; };
-		33A5D99220BA2E380038CE67 /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98D20BA2E370038CE67 /* liblept.a */; };
-		33A5D99320BA2E380038CE67 /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98E20BA2E370038CE67 /* libtesseract.a */; };
-		33A5D99420BA2E380038CE67 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D98F20BA2E370038CE67 /* libjpeg.a */; };
-		33A5D99520BA2E380038CE67 /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D99020BA2E370038CE67 /* libpng.a */; };
-		33A5D99620BA2E380038CE67 /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D99120BA2E380038CE67 /* libtiff.a */; };
+		43A3B66721820D76004300ED /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D8DA20B98FB10038CE67 /* libjpeg.a */; };
+		43A3B66821820D76004300ED /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D8DB20B98FB10038CE67 /* liblept.a */; };
+		43A3B66921820D76004300ED /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D8D720B98FB10038CE67 /* libpng.a */; };
+		43A3B66A21820D76004300ED /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D8D920B98FB10038CE67 /* libtesseract.a */; };
+		43A3B66B21820D76004300ED /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33A5D8D820B98FB10038CE67 /* libtiff.a */; };
+		43A3B66D21820D81004300ED /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A3B66C21820D81004300ED /* libz.tbd */; };
+		43A3B66F21820E49004300ED /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 43A3B66E21820E49004300ED /* libz.tbd */; };
+		43A3B67021820E51004300ED /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8EA02095CF7C0084EE39 /* libjpeg.a */; };
+		43A3B67121820E51004300ED /* liblept.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8EA12095CF7C0084EE39 /* liblept.a */; };
+		43A3B67221820E51004300ED /* libpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E9D2095CF7C0084EE39 /* libpng.a */; };
+		43A3B67321820E51004300ED /* libtesseract.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E9F2095CF7C0084EE39 /* libtesseract.a */; };
+		43A3B67421820E51004300ED /* libtiff.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 333B8E9E2095CF7C0084EE39 /* libtiff.a */; };
 		73C0A7961A5932C400D823D4 /* G8Tesseract.h in Headers */ = {isa = PBXBuildFile; fileRef = 64A029D617307CD0002B12E7 /* G8Tesseract.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73C0A7971A5932C800D823D4 /* G8Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = 64A029D717307CD0002B12E7 /* G8Tesseract.mm */; };
 		73C0A7981A5932CC00D823D4 /* G8TesseractDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 4141211F1A4C578800583ED4 /* G8TesseractDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -171,12 +171,6 @@
 
 /* Begin PBXFileReference section */
 		332186872116208900494CBB /* tess_version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tess_version.h; sourceTree = "<group>"; };
-		333B8E462093C79E0084EE39 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		333B8E492095CE630084EE39 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = TesseractOCR/ios/lib/libpng.a; sourceTree = "<group>"; };
-		333B8E4A2095CE630084EE39 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtesseract.a; path = TesseractOCR/ios/lib/libtesseract.a; sourceTree = "<group>"; };
-		333B8E4B2095CE630084EE39 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = TesseractOCR/ios/lib/libtiff.a; sourceTree = "<group>"; };
-		333B8E4C2095CE630084EE39 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblept.a; path = TesseractOCR/ios/lib/liblept.a; sourceTree = "<group>"; };
-		333B8E4D2095CE630084EE39 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = TesseractOCR/ios/lib/libjpeg.a; sourceTree = "<group>"; };
 		333B8E552095CF7C0084EE39 /* jpeglib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jpeglib.h; sourceTree = "<group>"; };
 		333B8E562095CF7C0084EE39 /* jerror.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jerror.h; sourceTree = "<group>"; };
 		333B8E572095CF7C0084EE39 /* tiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tiff.h; sourceTree = "<group>"; };
@@ -242,7 +236,7 @@
 		333B8E9F2095CF7C0084EE39 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
 		333B8EA02095CF7C0084EE39 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		333B8EA12095CF7C0084EE39 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblept.a; sourceTree = "<group>"; };
-		334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCRmacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		33A51679211E55C900754CFA /* G8HierarchicalRecognizedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8HierarchicalRecognizedBlock.h; sourceTree = "<group>"; };
 		33A5167A211E55C900754CFA /* G8HierarchicalRecognizedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8HierarchicalRecognizedBlock.m; sourceTree = "<group>"; };
 		33A5D6C720B983690038CE67 /* TesseractOCR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TesseractOCR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -312,12 +306,6 @@
 		33A5D8D920B98FB10038CE67 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libtesseract.a; sourceTree = "<group>"; };
 		33A5D8DA20B98FB10038CE67 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		33A5D8DB20B98FB10038CE67 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = liblept.a; sourceTree = "<group>"; };
-		33A5D98D20BA2E370038CE67 /* liblept.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liblept.a; path = TesseractOCR/macos/lib/liblept.a; sourceTree = "<group>"; };
-		33A5D98E20BA2E370038CE67 /* libtesseract.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtesseract.a; path = TesseractOCR/macos/lib/libtesseract.a; sourceTree = "<group>"; };
-		33A5D98F20BA2E370038CE67 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjpeg.a; path = TesseractOCR/macos/lib/libjpeg.a; sourceTree = "<group>"; };
-		33A5D99020BA2E370038CE67 /* libpng.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpng.a; path = TesseractOCR/macos/lib/libpng.a; sourceTree = "<group>"; };
-		33A5D99120BA2E380038CE67 /* libtiff.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtiff.a; path = TesseractOCR/macos/lib/libtiff.a; sourceTree = "<group>"; };
-		33E94E74207540260005399D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		4141211F1A4C578800583ED4 /* G8TesseractDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = G8TesseractDelegate.h; sourceTree = "<group>"; };
 		418997A71A42CC8B00D6477C /* G8Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8Constants.h; sourceTree = "<group>"; };
 		41A95DE81A3AF39B0085093C /* G8TesseractParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8TesseractParameters.h; sourceTree = "<group>"; };
@@ -326,7 +314,8 @@
 		41A95DED1A3AFBF30085093C /* G8RecognitionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8RecognitionOperation.m; sourceTree = "<group>"; };
 		41B41A4F1A42ED7600D46246 /* G8RecognizedBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = G8RecognizedBlock.h; sourceTree = "<group>"; };
 		41B41A501A42ED7600D46246 /* G8RecognizedBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = G8RecognizedBlock.m; sourceTree = "<group>"; };
-		645C864A18698EBA00B27B19 /* README_howto_compile_libaries.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README_howto_compile_libaries.md; sourceTree = "<group>"; };
+		43A3B66C21820D81004300ED /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		43A3B66E21820E49004300ED /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		646772C318083B5600C85662 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		64A0293117307C1D002B12E7 /* TesseractOCR-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TesseractOCR-Info.plist"; sourceTree = "<group>"; };
 		64A0293517307C1D002B12E7 /* TesseractOCR-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TesseractOCR-Prefix.pch"; sourceTree = "<group>"; };
@@ -340,12 +329,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333B8E482093C7A80084EE39 /* libz.tbd in Frameworks */,
-				33A5D99320BA2E380038CE67 /* libtesseract.a in Frameworks */,
-				33A5D99220BA2E380038CE67 /* liblept.a in Frameworks */,
-				33A5D99620BA2E380038CE67 /* libtiff.a in Frameworks */,
-				33A5D99520BA2E380038CE67 /* libpng.a in Frameworks */,
-				33A5D99420BA2E380038CE67 /* libjpeg.a in Frameworks */,
+				43A3B66D21820D81004300ED /* libz.tbd in Frameworks */,
+				43A3B66721820D76004300ED /* libjpeg.a in Frameworks */,
+				43A3B66821820D76004300ED /* liblept.a in Frameworks */,
+				43A3B66921820D76004300ED /* libpng.a in Frameworks */,
+				43A3B66A21820D76004300ED /* libtesseract.a in Frameworks */,
+				43A3B66B21820D76004300ED /* libtiff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,12 +342,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333B8E472093C79E0084EE39 /* libz.tbd in Frameworks */,
-				33A5D6D620B98B730038CE67 /* libtesseract.a in Frameworks */,
-				33A5D6D420B98B730038CE67 /* liblept.a in Frameworks */,
-				33A5D6D720B98B730038CE67 /* libtiff.a in Frameworks */,
-				33A5D6D520B98B730038CE67 /* libpng.a in Frameworks */,
-				33A5D6D320B98B730038CE67 /* libjpeg.a in Frameworks */,
+				43A3B66F21820E49004300ED /* libz.tbd in Frameworks */,
+				43A3B67021820E51004300ED /* libjpeg.a in Frameworks */,
+				43A3B67121820E51004300ED /* liblept.a in Frameworks */,
+				43A3B67221820E51004300ED /* libpng.a in Frameworks */,
+				43A3B67321820E51004300ED /* libtesseract.a in Frameworks */,
+				43A3B67421820E51004300ED /* libtiff.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,37 +564,21 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		33A5D8DF20B9901F0038CE67 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				333B8E4A2095CE630084EE39 /* libtesseract.a */,
-				333B8E4C2095CE630084EE39 /* liblept.a */,
-				333B8E4B2095CE630084EE39 /* libtiff.a */,
-				333B8E492095CE630084EE39 /* libpng.a */,
-				333B8E4D2095CE630084EE39 /* libjpeg.a */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		33A5D8E320B990600038CE67 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D98E20BA2E370038CE67 /* libtesseract.a */,
-				33A5D98D20BA2E370038CE67 /* liblept.a */,
-				33A5D99120BA2E380038CE67 /* libtiff.a */,
-				33A5D99020BA2E370038CE67 /* libpng.a */,
-				33A5D98F20BA2E370038CE67 /* libjpeg.a */,
-			);
-			name = macOS;
-			sourceTree = "<group>";
-		};
 		41C7E8211A3F0650000DC42B /* Readme */ = {
 			isa = PBXGroup;
 			children = (
 				646772C318083B5600C85662 /* README.md */,
-				645C864A18698EBA00B27B19 /* README_howto_compile_libaries.md */,
 			);
 			name = Readme;
+			sourceTree = "<group>";
+		};
+		43A3B66621820D76004300ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				43A3B66E21820E49004300ED /* libz.tbd */,
+				43A3B66C21820D81004300ED /* libz.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		64A0292F17307C1D002B12E7 /* TesseractOCR */ = {
@@ -629,7 +602,7 @@
 				41C7E8211A3F0650000DC42B /* Readme */,
 				64A0293017307C1D002B12E7 /* Supporting Files */,
 			);
-			path = TesseractOCR;
+			name = TesseractOCR;
 			sourceTree = "<group>";
 		};
 		64A0293017307C1D002B12E7 /* Supporting Files */ = {
@@ -645,21 +618,10 @@
 			isa = PBXGroup;
 			children = (
 				64A0292F17307C1D002B12E7 /* TesseractOCR */,
-				64F74CCB172FD75F0068E657 /* Frameworks */,
-				334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */,
+				334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */,
 				33A5D6C720B983690038CE67 /* TesseractOCR.framework */,
+				43A3B66621820D76004300ED /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		64F74CCB172FD75F0068E657 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				33A5D8E320B990600038CE67 /* macOS */,
-				33A5D8DF20B9901F0038CE67 /* iOS */,
-				33E94E74207540260005399D /* libz.tbd */,
-				333B8E462093C79E0084EE39 /* libz.tbd */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -820,9 +782,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3387587B206A6A7F006E5B96 /* TesseractOCRmacOS */ = {
+		3387587B206A6A7F006E5B96 /* TesseractOCR-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCRmacOS" */;
+			buildConfigurationList = 338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCR-macOS" */;
 			buildPhases = (
 				3387587C206A6A7F006E5B96 /* Build Dependent Libraries */,
 				3387587D206A6A7F006E5B96 /* Sources */,
@@ -834,14 +796,14 @@
 			);
 			dependencies = (
 			);
-			name = TesseractOCRmacOS;
+			name = "TesseractOCR-macOS";
 			productName = "TesseractOCR-Framework";
-			productReference = 334A67C820AF6BEC00AAA630 /* TesseractOCRmacOS.framework */;
+			productReference = 334A67C820AF6BEC00AAA630 /* TesseractOCR.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		73C0A77B1A592C2B00D823D4 /* TesseractOCR */ = {
+		73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR" */;
+			buildConfigurationList = 73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR-iOS" */;
 			buildPhases = (
 				84E5F9C61B7A2F4D0012381C /* Build Dependent Libraries */,
 				73C0A7771A592C2B00D823D4 /* Sources */,
@@ -853,7 +815,7 @@
 			);
 			dependencies = (
 			);
-			name = TesseractOCR;
+			name = "TesseractOCR-iOS";
 			productName = "TesseractOCR-Framework";
 			productReference = 33A5D6C720B983690038CE67 /* TesseractOCR.framework */;
 			productType = "com.apple.product-type.framework";
@@ -873,7 +835,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR iOS" */;
+			buildConfigurationList = 64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR Framework" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -885,8 +847,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				73C0A77B1A592C2B00D823D4 /* TesseractOCR */,
-				3387587B206A6A7F006E5B96 /* TesseractOCRmacOS */,
+				73C0A77B1A592C2B00D823D4 /* TesseractOCR-iOS */,
+				3387587B206A6A7F006E5B96 /* TesseractOCR-macOS */,
 			);
 		};
 /* End PBXProject section */
@@ -994,13 +956,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/macos/lib",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/macos/dependencies/lib",
+					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1009,7 +970,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1044,13 +1005,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/macos/lib",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/macos/dependencies/lib",
+					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1059,7 +1019,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1091,13 +1051,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/macos/lib",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/macos/dependencies/lib",
+					"$(PROJECT_DIR)/macos/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1106,7 +1065,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.mac.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1242,13 +1201,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
-					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
+					"$(PROJECT_DIR)/ios/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1257,7 +1215,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1288,13 +1246,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
-					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
+					"$(PROJECT_DIR)/ios/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1303,7 +1260,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1392,13 +1349,12 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = "TesseractOCR/TesseractOCR-Info.plist";
+				INFOPLIST_FILE = "TesseractOCR-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/TesseractOCR/libtiff-ios/ios/dependencies/lib",
-					"$(PROJECT_DIR)/TesseractOCR/ios/lib",
+					"$(PROJECT_DIR)/ios/lib",
 				);
 				MACH_O_TYPE = mh_dylib;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1407,7 +1363,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.holtwick.ios.TesseractOCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TesseractOCR;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1418,7 +1374,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCRmacOS" */ = {
+		338758D7206A6A7F006E5B96 /* Build configuration list for PBXNativeTarget "TesseractOCR-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				338758D8206A6A7F006E5B96 /* Debug */,
@@ -1428,7 +1384,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR iOS" */ = {
+		64F74CC4172FD75F0068E657 /* Build configuration list for PBXProject "Tesseract OCR Framework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64F74CD5172FD75F0068E657 /* Debug */,
@@ -1438,7 +1394,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR" */ = {
+		73C0A7931A592C2B00D823D4 /* Build configuration list for PBXNativeTarget "TesseractOCR-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				73C0A78F1A592C2B00D823D4 /* Debug */,
