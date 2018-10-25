@@ -159,7 +159,7 @@ $(LEPTON_SRC)/$(PLATFORM_PREFIX)/%/Makefile : $(imagesfat) $(libleptconfig)
 	export PKG_CONFIG_PATH=$(PNG_SRC)/$*/:$(JPEG_SRC)/$*/:$(TIFF_SRC)/$*/ ; \
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
-	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --without-giflib --with-libtiff --without-libwebp 
+	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --without-libopenjpeg --without-giflib --with-libtiff --without-libwebp 
 
 $(libleptconfig) : $(libleptautogen)
 	cd $(@D) && ./autogen.sh 2> /dev/null
@@ -181,9 +181,8 @@ $(images) : $(imagesmakefile) FORCE
 # Download dependencies
 #######################
 $(imagesmakefile) $(libtessautogen) :
-	git submodule init
-	git submodule update
-
+    # git submodule init
+    # git submodule update
 
 #######################
 # Clean
@@ -205,7 +204,9 @@ cleanimages :
 .PHONY : cleanlept
 cleanlept :
 	cd $(LEPTON_SRC) ; \
-	git clean -fdX
+    git clean -fdX ; \
+    rm -rf macos ; \
+    rm -rf ios
 	# for folder in $(realpath $(libleptfolders_all) ); do \
 	# 	cd $$folder; \
 	# 	$(MAKE) clean; \
@@ -214,7 +215,9 @@ cleanlept :
 .PHONY : cleantess
 cleantess :
 	cd $(TESSERACT_SRC) ; \
-	git clean -fdX
+	git clean -fdX ; \
+    rm -rf macos ; \
+    rm -rf ios
     # for folder in $(realpath $(libtessfolders_all) ); do \
     # 	cd $$folder; \
     # 	$(MAKE) clean; \
