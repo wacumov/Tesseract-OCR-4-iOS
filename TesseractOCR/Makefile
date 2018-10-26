@@ -159,7 +159,7 @@ $(LEPTON_SRC)/$(PLATFORM_PREFIX)/%/Makefile : $(imagesfat) $(libleptconfig)
 	export PKG_CONFIG_PATH=$(PNG_SRC)/$*/:$(JPEG_SRC)/$*/:$(TIFF_SRC)/$*/ ; \
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
-	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --without-libopenjpeg --without-giflib --with-libtiff --without-libwebp 
+	../../configure --host=$* --prefix=`pwd` --enable-shared=no --disable-programs --with-zlib --with-libpng --with-jpeg --with-libtiff --without-libopenjpeg --without-giflib --without-libwebp 
 
 $(libleptconfig) : $(libleptautogen)
 	cd $(@D) && ./autogen.sh 2> /dev/null
