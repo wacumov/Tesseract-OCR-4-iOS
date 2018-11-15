@@ -88,6 +88,25 @@ typedef NS_ENUM(NSUInteger, G8OCREngineMode){
      */
     G8OCREngineModeTesseractOnly,
     /**
+     *  Run just the LSTM line recognizer
+     */
+    G8OCREngineModeLSTMOnly,
+    /**
+     *  Run the LSTM recognizer, but allow fallback
+     *  to Tesseract when things get difficult.
+     */
+    G8OCREngineModeTesseractLSTMCombined,
+    /**
+     *  Specify this mode when calling init_*(),
+     *  to indicate that any of the above modes
+     *  should be automatically inferred from the
+     *  variables in the language-specific config,
+     *  command-line configs, or if not specified
+     *  in any of the above should be set to the
+     *  default OEM_TESSERACT_ONLY.
+     */
+    G8OCREngineModeDefault,
+    /**
      *  Run Cube only - better accuracy, but slower
      */
     G8OCREngineModeCubeOnly,
@@ -95,7 +114,6 @@ typedef NS_ENUM(NSUInteger, G8OCREngineMode){
      *  Run both and combine results - best accuracy
      */
     G8OCREngineModeTesseractCubeCombined,
-//    G8OCREngineModeDefault,
 };
 
 /**
