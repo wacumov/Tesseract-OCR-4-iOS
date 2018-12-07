@@ -21,11 +21,13 @@
 #ifndef TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H_
 #define TESSERACT_CCMAIN_LTR_RESULT_ITERATOR_H_
 
-#include "platform.h"
-#include "pageiterator.h"
-#include "unichar.h"
+#include "pageiterator.h"  // for PageIterator
+#include "platform.h"      // for TESS_API
+#include "publictypes.h"   // for PageIteratorLevel
+#include "unichar.h"       // for StrongScriptDirection
 
 class BLOB_CHOICE_IT;
+class PAGE_RES;
 class WERD_RES;
 
 namespace tesseract {
@@ -62,6 +64,7 @@ class TESS_API LTRResultIterator : public PageIterator {
                     int scale, int scaled_yres,
                     int rect_left, int rect_top,
                     int rect_width, int rect_height);
+
   virtual ~LTRResultIterator();
 
   // LTRResultIterators may be copied! This makes it possible to iterate over
@@ -115,7 +118,7 @@ class TESS_API LTRResultIterator : public PageIterator {
                                  int* font_id) const;
 
   // Return the name of the language used to recognize this word.
-  // On error, NULL.  Do not delete this pointer.
+  // On error, nullptr.  Do not delete this pointer.
   const char* WordRecognitionLanguage() const;
 
   // Return the overall directionality of this word.
@@ -138,11 +141,11 @@ class TESS_API LTRResultIterator : public PageIterator {
   const void *GetParamsTrainingBundle() const;
 
   // Returns a pointer to the string with blamer information for this word.
-  // Assumes that the word's blamer_bundle is not NULL.
+  // Assumes that the word's blamer_bundle is not nullptr.
   const char *GetBlamerDebug() const;
 
   // Returns a pointer to the string with misadaption information for this word.
-  // Assumes that the word's blamer_bundle is not NULL.
+  // Assumes that the word's blamer_bundle is not nullptr.
   const char *GetBlamerMisadaptionDebug() const;
 
   // Returns true if a truth string was recorded for the current word.

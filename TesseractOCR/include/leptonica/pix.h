@@ -89,14 +89,16 @@
  *         Flags for 8 and 16 bit pixel sums
  *         Dithering flags
  *         Distance flags
+ *         Value flags
  *         Statistical measures
  *         Set selection flags
  *         Text orientation flags
  *         Edge orientation flags
  *         Line orientation flags
+ *         Image orientation flags
  *         Scan direction flags
  *         Box size adjustment flags
- *         Flags for selecting box boundaries from two choices
+ *         Flags for modifying box boundaries using a second box
  *         Handling overlapping bounding boxes in boxa
  *         Flags for replacing invalid boxes
  *         Horizontal warp
@@ -238,9 +240,9 @@ enum {
  *          International Telecommunications Union, via ITU-R.
  * </pre>
  */
-static const l_float32  L_RED_WEIGHT =   0.3;  /*!< Percept. weight for red   */
-static const l_float32  L_GREEN_WEIGHT = 0.5;  /*!< Percept. weight for green */
-static const l_float32  L_BLUE_WEIGHT =  0.2;  /*!< Percept. weight for blue  */
+static const l_float32 L_RED_WEIGHT =   0.3f; /*!< Percept. weight for red   */
+static const l_float32 L_GREEN_WEIGHT = 0.5f; /*!< Percept. weight for green */
+static const l_float32 L_BLUE_WEIGHT =  0.2f; /*!< Percept. weight for blue  */
 
 
 /*-------------------------------------------------------------------------*
@@ -366,7 +368,7 @@ enum {
  *       (4) We use 32 bit pixels for both RGB and RGBA color images.
  *           The A (alpha) byte is ignored in most leptonica functions
  *           operating on color images.  Within each 4 byte pixel, the
- *           colors are ordered from MSB to LSB, as follows:
+ *           color samples are ordered from MSB to LSB, as follows:
  *
  *                |  MSB  |  2nd MSB  |  3rd MSB  |  LSB  |
  *                   red      green       blue      alpha
@@ -395,18 +397,19 @@ enum {
  *                 SET_DATA_BYTE(&pixel, COLOR_BLUE, blueval);
  *                 SET_DATA_BYTE(&pixel, L_ALPHA_CHANNEL, alphaval);
  *
- *           For extra speed we extract these components directly
+ *           More efficiently, these components can be extracted directly
  *           by shifting and masking, explicitly using the values in
  *           L_RED_SHIFT, etc.:
  *                 (pixel32 >> L_RED_SHIFT) & 0xff;         (red)
  *                 (pixel32 >> L_GREEN_SHIFT) & 0xff;       (green)
  *                 (pixel32 >> L_BLUE_SHIFT) & 0xff;        (blue)
  *                 (pixel32 >> L_ALPHA_SHIFT) & 0xff;       (alpha)
- *           All these operations work properly on both big- and little-endians.
+ *           The functions extractRGBValues() and extractRGBAValues() are
+ *           provided to do this.  Likewise, the pixels can be set
+ *           directly by shifting, using composeRGBPixel() and
+ *           composeRGBAPixel().
  *
- *           For a few situations, these color shift values are hard-coded.
- *           Changing the RGB color component ordering through the assignments
- *           in this file will cause functions marked with "***" to fail.
+ *           All these operations work properly on both big- and little-endians.
  *
  *       (5) A reference count is held within each pix, giving the
  *           number of ptrs to the pix.  When a pixClone() call
@@ -676,9 +679,13 @@ typedef struct PixaComp PIXAC;
  *               Can be undesirable if very large, such as an image or
  *               an array of images.)
  *     (3) clone (Makes another handle to the same struct, and bumps the
- *                refcount up by 1.  Safe to do unless you're changing
- *                data through one of the handles but don't want those
- *                changes to be seen by the other handle.)
+ *                refcount up by 1.  OK to use except in two situations:
+ *                (a) You change data through one of the handles but don't
+ *                    want those changes to be seen by the other handle.
+ *                (b) The application is multi-threaded.  Because the clone
+ *                    operation is not atomic (e.g., locked with a mutex),
+ *                    it is possible to end up with an incorrect ref count,
+ *                    causing either a memory leak or a crash.
  *
  *  For Pixa and Boxa, which are structs that hold an array of clonable
  *  structs, there is an additional method:
@@ -686,25 +693,33 @@ typedef struct PixaComp PIXAC;
  *                     of 1, but clones all the structs in the array.)
  *
  *  Unlike the other structs, when retrieving a string from an Sarray,
- *  you are allowed to get a handle without a copy or clone (i.e., that
- *  you don't own!).  You must not free or insert such a string!
- *  Specifically, for an Sarray, the copyflag for retrieval is either:
+ *  you are allowed to get a handle without a copy or clone (i.e., the
+ *  string is not owned by the handle).  You must not either free the string
+ *  or insert it in some other struct that would own it.  Specifically,
+ *  for an Sarray, the copyflag for retrieval is either:
  *         L_COPY or L_NOCOPY
  *  and for insertion, the copyflag is either:
  *         L_COPY or one of {L_INSERT , L_NOCOPY} (the latter are equivalent
  *                                                 for insertion))
+ *  Typical patterns are:
+ *  (1) Reference a string in an Sarray with L_NOCOPY and insert a copy
+ *      of it in another Sarray with L_COPY.
+ *  (2) Copy a string from an Sarray with L_COPY and insert it in
+ *      another Sarray with L_INSERT (or L_NOCOPY).
+ *  In both cases, a copy is made and both Sarrays own their instance
+ *  of that string.
  * </pre>
  */
 
 /*! Access and storage flags */
 enum {
     L_NOCOPY = 0,     /*!< do not copy the object; do not delete the ptr  */
+    L_INSERT = L_NOCOPY,    /*!< stuff it in; do not copy or clone        */
     L_COPY = 1,       /*!< make/use a copy of the object                  */
     L_CLONE = 2,      /*!< make/use clone (ref count) of the object       */
-    L_COPY_CLONE = 3  /*!< make a new object and fill each object in the  */
-                      /*!< array(s) with clones                           */
+    L_COPY_CLONE = 3  /*!< make a new array object (e.g., pixa) and fill  */
+                      /*!< the array with clones (e.g., pix)              */
 };
-static const l_int32  L_INSERT = 0;  /*!< stuff it in; no copy or clone   */
 
 
 /*----------------------------------------------------------------------------*
@@ -939,6 +954,21 @@ enum {
 
 
 /*-------------------------------------------------------------------------*
+ *                               Value flags                               *
+ *-------------------------------------------------------------------------*/
+
+/*! Value flags */
+enum {
+    L_NEGATIVE = 1,      /*!< values < 0                                   */
+    L_NON_NEGATIVE = 2,  /*!< values >= 0                                  */
+    L_POSITIVE = 3,      /*!< values > 0                                   */
+    L_NON_POSITIVE = 4,  /*!< values <= 0                                  */
+    L_ZERO = 5,          /*!< values = 0                                   */
+    L_ALL = 6            /*!< all values                                   */
+};
+
+
+/*-------------------------------------------------------------------------*
  *                         Statistical measures                            *
  *-------------------------------------------------------------------------*/
 
@@ -1006,6 +1036,17 @@ enum {
 
 
 /*-------------------------------------------------------------------------*
+ *                         Image orientation flags                         *
+ *-------------------------------------------------------------------------*/
+
+/*! Image orientation flags */
+enum {
+    L_PORTRAIT_MODE = 0,   /*!< typical: page is viewed with height > width  */
+    L_LANDSCAPE_MODE = 1   /*!< page is viewed at 90 deg to portrait mode    */
+};
+
+
+/*-------------------------------------------------------------------------*
  *                           Scan direction flags                          *
  *-------------------------------------------------------------------------*/
 
@@ -1050,16 +1091,17 @@ enum {
 
 
 /*-------------------------------------------------------------------------*
- *          Flags for selecting box boundaries from two choices            *
+ *          Flags for modifying box boundaries using a second box          *
  *-------------------------------------------------------------------------*/
 
-/*! Flags for selecting box boundaries from two choices */
+/*! Flags for modifying box boundaries using a second box */
 enum {
     L_USE_MINSIZE = 1,           /*!< use boundaries giving min size       */
     L_USE_MAXSIZE = 2,           /*!< use boundaries giving max size       */
-    L_SUB_ON_BIG_DIFF = 3,       /*!< substitute boundary if big abs diff  */
-    L_USE_CAPPED_MIN = 4,        /*!< substitute boundary with capped min  */
-    L_USE_CAPPED_MAX = 5         /*!< substitute boundary with capped max  */
+    L_SUB_ON_LOC_DIFF = 3,       /*!< modify boundary if big location diff */
+    L_SUB_ON_SIZE_DIFF = 4,      /*!< modify boundary if big size diff     */
+    L_USE_CAPPED_MIN = 5,        /*!< modify boundary with capped min      */
+    L_USE_CAPPED_MAX = 6         /*!< modify boundary with capped max      */
 };
 
 /*-------------------------------------------------------------------------*

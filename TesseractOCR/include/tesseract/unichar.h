@@ -21,7 +21,7 @@
 #define TESSERACT_CCUTIL_UNICHAR_H_
 
 #include <memory.h>
-#include <string.h>
+#include <cstring>
 #include <string>
 #include <vector>
 #include "platform.h"
@@ -32,7 +32,7 @@
 
 // TODO(rays) Move these to the tesseract namespace.
 // A UNICHAR_ID is the unique id of a unichar.
-typedef int UNICHAR_ID;
+using UNICHAR_ID = int;
 
 // A variable to indicate an invalid or uninitialized unichar id.
 static const int INVALID_UNICHAR_ID = -1;
@@ -49,7 +49,7 @@ enum StrongScriptDirection {
 
 namespace tesseract {
 
-typedef signed int char32;
+using char32 = signed int;
 
 // The UNICHAR class holds a single classification result. This may be
 // a single Unicode character (stored as between 1 and 4 utf8 bytes) or
@@ -80,7 +80,7 @@ class UNICHAR {
     return len >=0 && len < UNICHAR_LEN ? len : UNICHAR_LEN;
   }
 
-  // Get a UTF8 string, but NOT NULL terminated.
+  // Get a UTF8 string, but NOT nullptr terminated.
   const char* utf8() const {
     return chars;
   }
@@ -106,12 +106,12 @@ class UNICHAR {
   //     tprintf("Char = %s\n", buf);
   //   }
   class const_iterator {
-    typedef const_iterator CI;
+    using CI = const_iterator ;
 
    public:
     // Step to the next UTF8 character.
     // If the current position is at an illegal UTF8 character, then print an
-    // error message and step by one byte. If the current position is at a NULL
+    // error message and step by one byte. If the current position is at a nullptr
     // value, don't step past it.
     const_iterator& operator++();
 

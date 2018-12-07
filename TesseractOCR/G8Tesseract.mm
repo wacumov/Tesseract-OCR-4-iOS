@@ -150,7 +150,7 @@ namespace tesseract {
             _absoluteDataPath = [NSBundle mainBundle].bundlePath;
         }
         
-        setenv("TESSDATA_PREFIX", [_absoluteDataPath stringByAppendingString:@"/"].fileSystemRepresentation, 1);
+        setenv("TESSDATA_PREFIX", [_absoluteDataPath stringByAppendingPathComponent:@"tessdata"].fileSystemRepresentation, 1);
 
         self.language = language.copy;
     }
@@ -191,7 +191,7 @@ namespace tesseract {
     for (int i = 0; i < count; i++) {
         configs[i] = ((NSString*)self.configFileNames[i]).fileSystemRepresentation;
     }
-    int returnCode = self.tesseract->Init(self.absoluteDataPath.fileSystemRepresentation, self.language.UTF8String,
+    int returnCode = self.tesseract->Init([self.absoluteDataPath stringByAppendingPathComponent:@"tessdata"].fileSystemRepresentation, self.language.UTF8String,
                                           (tesseract::OcrEngineMode)self.engineMode,
                                           (char **)configs, count,
                                           &tessKeys, &tessValues,
@@ -827,7 +827,7 @@ namespace tesseract {
     }
 
     if (self.maximumRecognitionTime > FLT_EPSILON) {
-        _monitor->set_deadline_msecs((inT32)(self.maximumRecognitionTime * 1000));
+        _monitor->set_deadline_msecs((int32_t)(self.maximumRecognitionTime * 1000));
     }
 
     self.recognized = NO;

@@ -1,4 +1,4 @@
-LEPTON_NAME = leptonica-1.74.4
+LEPTON_NAME = leptonica-1.76.0
 PNG_NAME    = libpng-1.6.31
 JPEG_NAME   = jpeg-9a
 TIFF_NAME   = tiff-4.0.8
@@ -91,7 +91,8 @@ $(TESSERACT_SRC)/%/Makefile : $(libtessconfig) $(libleptfat)
 	export CPPFLAGS=$$CFLAGS ; \
 	export CXXFLAGS="-I$(TESSERACT_SRC)/$*/ $(common_cflags) -Wno-deprecated-register"; \
 	export LDFLAGS="-L$$SDKROOT/usr/lib/ -L$(LEPTON_SRC)/$*/src/.libs" ; \
-	export LIBLEPT_HEADERSDIR=$(TESSERACT_SRC)/$*/ ; \
+	export LEPTONICA_CFLAGS="-I$(TESSERACT_SRC)/$*/ $(common_cflags) -I$(LEPT_INC_DIR)/leptonica" ; \
+	export LEPTONICA_LIBS="-llept" ; \
 	mkdir -p $(@D) ; \
 	cd $(@D) ; \
 	ln -s $(LEPTON_SRC)/src/ leptonica ; \

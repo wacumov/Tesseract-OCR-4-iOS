@@ -20,8 +20,6 @@
 #ifndef TESSERACT_CCUTIL_PLATFORM_H_
 #define TESSERACT_CCUTIL_PLATFORM_H_
 
-#include <string.h>
-
 #define DLLSYM
 #ifdef _WIN32
 #ifndef NOMINMAX
@@ -34,29 +32,18 @@
 #define ultoa _ultoa
 #endif  /* __GNUC__ */
 #define SIGNED
-#if defined(_MSC_VER)
-#if (_MSC_VER < 1900)
-#define snprintf _snprintf
-#endif
-#if (_MSC_VER <= 1400)
-#define vsnprintf _vsnprintf
-#endif /* (_MSC_VER <= 1400) */
-#endif /* defined(_MSC_VER) */
 #else
-#define __UNIX__
+#ifdef __cplusplus
+#include <climits>
+#else /* C compiler*/
 #include <limits.h>
+#endif /* __cplusplus */
 #ifndef PATH_MAX
 #define MAX_PATH 4096
 #else
 #define MAX_PATH PATH_MAX
 #endif
 #define SIGNED signed
-#endif
-
-// Fix to map between google use of string without std and everywhere else.
-#ifdef USE_STD_NAMESPACE
-#include <string>
-using std::string;
 #endif
 
 #if defined(_WIN32) || defined(__CYGWIN__)

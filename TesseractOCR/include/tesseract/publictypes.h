@@ -30,7 +30,19 @@
 // API-level code should include apitypes.h in preference to this file.
 
 /** Number of printers' points in an inch. The unit of the pointsize return. */
-const int kPointsPerInch = 72;
+constexpr int kPointsPerInch = 72;
+/**
+ * Minimum believable resolution. Used as a default if there is no other
+ * information, as it is safer to under-estimate than over-estimate.
+ */
+constexpr int kMinCredibleResolution = 70;
+/** Maximum believable resolution.  */
+constexpr int kMaxCredibleResolution = 2400;
+/**
+ * Ratio between median blob size and likely resolution. Used to estimate
+ * resolution when none is provided. This is basically 1/usual text size in
+ * inches.  */
+constexpr int kResolutionEstimationFactor = 10;
 
 /**
  * Possible types for a POLY_BLOCK or ColPartition.
@@ -254,10 +266,11 @@ enum ParagraphJustification {
  * mention the connection to OcrEngineMode in the comments.
 */
 enum OcrEngineMode {
-  OEM_TESSERACT_ONLY,           // Run Tesseract only - fastest
+  OEM_TESSERACT_ONLY,           // Run Tesseract only - fastest; deprecated
   OEM_LSTM_ONLY,                // Run just the LSTM line recognizer.
   OEM_TESSERACT_LSTM_COMBINED,  // Run the LSTM recognizer, but allow fallback
                                 // to Tesseract when things get difficult.
+                                // deprecated
   OEM_DEFAULT,                  // Specify this mode when calling init_*(),
                                 // to indicate that any of the above modes
                                 // should be automatically inferred from the
@@ -265,8 +278,7 @@ enum OcrEngineMode {
                                 // command-line configs, or if not specified
                                 // in any of the above should be set to the
                                 // default OEM_TESSERACT_ONLY.
-  OEM_CUBE_ONLY,                // Run Cube only - better accuracy, but slower
-  OEM_TESSERACT_CUBE_COMBINED,  // Run both and combine results - best accuracy
+  OEM_COUNT                     // Number of OEMs
 };
 
 }  // namespace tesseract.

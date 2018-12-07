@@ -28,6 +28,7 @@
 
     // Create a queue to perform recognition operations
     self.operationQueue = [[NSOperationQueue alloc] init];
+    NSLog(@"tesseract version = %@", [G8Tesseract version]);
 }
 
 -(void)recognizeImageWithTesseract:(UIImage *)image

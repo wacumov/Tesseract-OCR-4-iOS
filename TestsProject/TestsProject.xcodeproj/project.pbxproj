@@ -14,7 +14,6 @@
 		4115B97B1A3EF8E90004EC0A /* RecognitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115B97A1A3EF8E90004EC0A /* RecognitionTests.m */; };
 		4115B9851A3EF9920004EC0A /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4115B9841A3EF9920004EC0A /* Launch Screen.xib */; };
 		41184B4B1A3EFA8B007F5923 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41184B4A1A3EFA8B007F5923 /* UIKit.framework */; };
-		41184B4D1A3EFA93007F5923 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 41184B4C1A3EFA93007F5923 /* libstdc++.6.0.9.dylib */; };
 		41184B4F1A3EFA9B007F5923 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41184B4E1A3EFA9B007F5923 /* Foundation.framework */; };
 		41184B511A3EFAA8007F5923 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41184B501A3EFAA8007F5923 /* CoreGraphics.framework */; };
 		41184B591A3EFD41007F5923 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 41184B551A3EFCAD007F5923 /* tessdata */; };
@@ -46,6 +45,7 @@
 		84E136411B66BEE80062F5A2 /* well_scaned_page_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E1363A1B66BEE80062F5A2 /* well_scaned_page_right.png */; };
 		84E136421B66BEE80062F5A2 /* well_scaned_page_up_mirrored.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E1363B1B66BEE80062F5A2 /* well_scaned_page_up_mirrored.png */; };
 		8FA2F9CE23919BEC8C64A5EA /* libPods-TestsProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD3C116A45C293ADAC81D1B /* libPods-TestsProjectTests.a */; };
+		D66D2B7021BAD461000BD44E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D66D2B6F21BAD461000BD44E /* libc++.tbd */; };
 		F120B54A1B45D642003F38A7 /* empty.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F120B5491B45D642003F38A7 /* empty.pdf */; };
 		F19D834A1B34C97D00EB8D2E /* NSData+G8Equal.m in Sources */ = {isa = PBXBuildFile; fileRef = F19D83491B34C97D00EB8D2E /* NSData+G8Equal.m */; };
 		F1A7AB8E1B34B91000FE9650 /* well_scaned_page.pdf in Resources */ = {isa = PBXBuildFile; fileRef = F1A7AB8D1B34B91000FE9650 /* well_scaned_page.pdf */; };
@@ -116,6 +116,7 @@
 		84E1363A1B66BEE80062F5A2 /* well_scaned_page_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = well_scaned_page_right.png; sourceTree = "<group>"; };
 		84E1363B1B66BEE80062F5A2 /* well_scaned_page_up_mirrored.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = well_scaned_page_up_mirrored.png; sourceTree = "<group>"; };
 		8CA185A06F5E788CE0DC28EB /* Pods-TestsProjectTests.coverage.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsProjectTests.coverage.xcconfig"; path = "../Pods/Target Support Files/Pods-TestsProjectTests/Pods-TestsProjectTests.coverage.xcconfig"; sourceTree = "<group>"; };
+		D66D2B6F21BAD461000BD44E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		F120B5491B45D642003F38A7 /* empty.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = empty.pdf; sourceTree = "<group>"; };
 		F19D83481B34C97D00EB8D2E /* NSData+G8Equal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+G8Equal.h"; sourceTree = "<group>"; };
 		F19D83491B34C97D00EB8D2E /* NSData+G8Equal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+G8Equal.m"; sourceTree = "<group>"; };
@@ -129,8 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D66D2B7021BAD461000BD44E /* libc++.tbd in Frameworks */,
 				73BE4C441A5DADDD002C15F1 /* TesseractOCR.framework in Frameworks */,
-				41184B4D1A3EFA93007F5923 /* libstdc++.6.0.9.dylib in Frameworks */,
 				41184B511A3EFAA8007F5923 /* CoreGraphics.framework in Frameworks */,
 				41184B4F1A3EFA9B007F5923 /* Foundation.framework in Frameworks */,
 				41184B4B1A3EFA8B007F5923 /* UIKit.framework in Frameworks */,
@@ -225,6 +226,7 @@
 		41184B541A3EFAB9007F5923 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D66D2B6F21BAD461000BD44E /* libc++.tbd */,
 				733DD5CC1A5E7CE50042374D /* TesseractOCR.framework */,
 				73BE4C431A5DADDD002C15F1 /* TesseractOCR.framework */,
 				73C0A7BC1A59561F00D823D4 /* TesseractOCR.framework */,
@@ -305,8 +307,6 @@
 				4115B9701A3EF8E90004EC0A /* Sources */,
 				4115B9711A3EF8E90004EC0A /* Frameworks */,
 				4115B9721A3EF8E90004EC0A /* Resources */,
-				9017DE589BCC5537B8B27927 /* [CP] Copy Pods Resources */,
-				826E56F970C6CADD876869E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -401,49 +401,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		826E56F970C6CADD876869E3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-TestsProjectTests/Pods-TestsProjectTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9017DE589BCC5537B8B27927 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-TestsProjectTests/Pods-TestsProjectTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		EB697FCAF31FBCD095DB85A9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestsProjectTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
