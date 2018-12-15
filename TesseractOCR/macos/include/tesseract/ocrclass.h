@@ -118,19 +118,19 @@ class ETEXT_DESC {             // output header
                                     /// by call to set_deadline_msecs().
   EANYCODE_CHAR text[1];            /// character data
 
-  ETEXT_DESC()
-      : count(0),
-        progress(0),
-        more_to_come(0),
-        ocr_alive(0),
-        err_code(0),
-        cancel(nullptr),
-        progress_callback(nullptr),
-        progress_callback2(&default_progress_func),
-        cancel_this(nullptr) {
-    end_time = std::chrono::time_point<std::chrono::steady_clock,
-                                       std::chrono::milliseconds>();
-  }
+//  ETEXT_DESC()
+//      : count(0),
+//        progress(0),
+//        more_to_come(0),
+//        ocr_alive(0),
+//        err_code(0),
+//        cancel(nullptr),
+//        progress_callback(nullptr),
+//        progress_callback2(&default_progress_func),
+//        cancel_this(nullptr) {
+//    end_time = std::chrono::time_point<std::chrono::steady_clock,
+//                                       std::chrono::milliseconds>();
+//  }
 
   // Sets the end time to be deadline_msecs milliseconds from now.
   void set_deadline_msecs(int32_t deadline_msecs) {

@@ -524,7 +524,7 @@ namespace tesseract {
     unsigned char *imageData = imageRep.bitmapData;
     int bytes_per_line = (int)imageRep.bytesPerRow;
     int bytes_per_pixel = (int)imageRep.bitsPerPixel / 8;
-    int bits_per_pixel = (int)imageRep.bitsPerPixel; //bytes_per_pixel == 0 ? 1 : bytes_per_pixel * 8;
+    int bits_per_pixel = (int)(bytes_per_pixel == 0 ? 1 : bytes_per_pixel * 8);
 
     _tesseract->SetImage((const unsigned char*)imageData,
                          bytes_per_line * 8 / bits_per_pixel,
