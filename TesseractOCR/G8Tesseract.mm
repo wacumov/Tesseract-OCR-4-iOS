@@ -509,22 +509,27 @@ namespace tesseract {
     [self resetFlags];
 }
 
-- (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep {
+- (BOOL)useBitmapImageRep:(NSBitmapImageRep *)imageRep {
     if (!imageRep) {
         NSLog(@"ERROR: No image rep");
-        return;
+        return NO;
     }
 
     self.imageSize = CGSizeMake(imageRep.pixelsWide, imageRep.pixelsHigh);
     if (self.imageSize.width <= 0 || self.imageSize.width <= 0) {
         NSLog(@"ERROR: Image rep with wrong size");
-        return;
+        return NO;
     }
 
     unsigned char *imageData = imageRep.bitmapData;
+    if (!imageData) {
+        NSLog(@"ERROR: Image rep with no imageData");
+        return NO;
+    }
+
     int bytes_per_line = (int)imageRep.bytesPerRow;
     int bytes_per_pixel = (int)imageRep.bitsPerPixel / 8;
-    int bits_per_pixel = (int)imageRep.bitsPerPixel; //bytes_per_pixel == 0 ? 1 : bytes_per_pixel * 8;
+    int bits_per_pixel = (int)(bytes_per_pixel == 0 ? 1 : bytes_per_pixel * 8);
 
     _tesseract->SetImage((const unsigned char*)imageData,
                          bytes_per_line * 8 / bits_per_pixel,
@@ -537,6 +542,7 @@ namespace tesseract {
     _image = image;
 
     [self resetFlags];
+    return YES;
 }
 
 #endif
@@ -1071,7 +1077,7 @@ namespace tesseract {
                                                                           false);
     
     // Begin producing output
-    const char* kUnknownTitle = "";
+    const char* kUnknownTitle = "PDF Renderer";
     if (renderer && !renderer->BeginDocument(kUnknownTitle)) {
         return nil; // LCOV_EXCL_LINE
     }
@@ -1082,9 +1088,9 @@ namespace tesseract {
         XXImage *image = images[page];
         if ([image isKindOfClass:[XXImage class]]) {
             Pix *pixs = [self pixForImage:image];
-            Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
+            // Pix *pix = pixConvertTo1(pixs, UINT8_MAX / 2);
             // Pix *pix = pixConvertTo8(pixs, UINT8_MAX / 2);
-           // Pix *pix = pixConvertTo32(pixs);
+            Pix *pix = pixConvertTo32(pixs);
             pixDestroy(&pixs);
             
             if (self.maximumRecognitionTime > FLT_EPSILON) {
@@ -1098,12 +1104,10 @@ namespace tesseract {
             if (_tesseract->Recognize(_monitor) != 0) {
                 NSLog(@"Failed applying OCR to image");
                 result = NO;
-            } else {
-                if (renderer) {
-                    if (renderer->AddImage(_tesseract) != 0) {
-                        NSLog(@"Failed adding image to PDF");
-                        result = NO;
-                    }
+            } else {                
+                if (renderer && renderer->AddImage(_tesseract) != 0) {
+                    NSLog(@"Failed adding image to PDF");
+                    result = NO;
                 }
             }
             
