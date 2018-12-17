@@ -131,7 +131,7 @@ typedef void(^G8AlternativeTesseractOCRResultBlock_t)(struct G8AlternativeTesser
 #elif TARGET_OS_MAC
 @property (nonatomic, strong) NSImage *image;
 
-- (void)setBitmapImageRep:(NSBitmapImageRep *)imageRep;
+- (BOOL)useBitmapImageRep:(NSBitmapImageRep *)imageRep;
 #endif
 
 /**
