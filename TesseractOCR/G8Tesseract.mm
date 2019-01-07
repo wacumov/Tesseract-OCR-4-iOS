@@ -47,6 +47,8 @@
 #define XXImage NSImage
 #endif
 
+#define ERROR_DEF NSError * __autoreleasing error = nil;
+
 NSInteger const kG8DefaultResolution = 72;
 NSInteger const kG8MinCredibleResolution = 70;
 NSInteger const kG8MaxCredibleResolution = 2400;
@@ -298,7 +300,7 @@ namespace tesseract {
     }
     
     if ([fileManager fileExistsAtPath:destinationPath] == NO) {
-        NSError *error = nil;
+        ERROR_DEF
         BOOL res = [fileManager createDirectoryAtPath:destinationPath withIntermediateDirectories:YES attributes:nil error:&error];
         if (res == NO) {
             NSLog(@"Error creating folder %@: %@", destinationPath, error);
@@ -307,7 +309,7 @@ namespace tesseract {
     }
     
     BOOL result = YES;
-    NSError *error = nil;
+    ERROR_DEF
     NSArray *files = [fileManager contentsOfDirectoryAtPath:tessdataPath error:&error];
     if (files == nil) {
         NSLog(@"ERROR! %@", error.description);
@@ -1064,7 +1066,7 @@ namespace tesseract {
         return nil;
     }
 
-    NSError *error = nil;
+    ERROR_DEF
     NSString *tempDirPath = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
     NSLog(@"Temp folder %@", tempDirPath);
     [NSFileManager.defaultManager createDirectoryAtPath:tempDirPath withIntermediateDirectories:YES attributes:nil error:&error];
