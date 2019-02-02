@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D7EF862205C63E0050881F /* multiple_interword_spaces.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18D7EF852205C63E0050881F /* multiple_interword_spaces.jpg */; };
 		428615B71845F340005D5A2E /* image_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 428615B61845F340005D5A2E /* image_sample.jpg */; };
 		6400DDD9180C5DE000443362 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6400DDD8180C5DE000443362 /* Foundation.framework */; };
 		6400DDDB180C5DE000443362 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6400DDDA180C5DE000443362 /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18D7EF852205C63E0050881F /* multiple_interword_spaces.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = multiple_interword_spaces.jpg; sourceTree = "<group>"; };
 		428615B61845F340005D5A2E /* image_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image_sample.jpg; sourceTree = "<group>"; };
 		6400DDD5180C5DE000443362 /* Template Framework Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Template Framework Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6400DDD8180C5DE000443362 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				428615B61845F340005D5A2E /* image_sample.jpg */,
+				18D7EF852205C63E0050881F /* multiple_interword_spaces.jpg */,
 				6400DDE0180C5DE000443362 /* Template Framework Project-Info.plist */,
 				6400DDE1180C5DE000443362 /* InfoPlist.strings */,
 				6400DDE4180C5DE000443362 /* main.m */,
@@ -179,6 +182,7 @@
 				6400DDF1180C5DE000443362 /* Images.xcassets in Resources */,
 				428615B71845F340005D5A2E /* image_sample.jpg in Resources */,
 				64DDA75B188FD9140025590D /* tessdata in Resources */,
+				18D7EF862205C63E0050881F /* multiple_interword_spaces.jpg in Resources */,
 				6400DDE3180C5DE000443362 /* InfoPlist.strings in Resources */,
 				64DDA74E188FD7D10025590D /* Main.storyboard in Resources */,
 			);

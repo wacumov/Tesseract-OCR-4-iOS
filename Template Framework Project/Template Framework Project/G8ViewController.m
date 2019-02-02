@@ -43,10 +43,13 @@
     // a symbolic group in your project
     G8RecognitionOperation *operation = [[G8RecognitionOperation alloc] initWithLanguage:@"eng"];
 
-    // Use the original Tesseract engine mode in performing the recognition
+    // Use LSTMOnly engine mode in performing the recognition
     // (see G8Constants.h) for other engine mode options
-    operation.tesseract.engineMode = G8OCREngineModeTesseractOnly;
-    
+    operation.tesseract.engineMode = G8OCREngineModeLSTMOnly;
+
+    // Preserve multiple interword spaces
+    [operation.tesseract setVariableValue:@"1" forKey:@"preserve_interword_spaces"];
+
     // Let Tesseract automatically segment the page into blocks of text
     // based on its analysis (see G8Constants.h) for other page segmentation
     // mode options
@@ -136,7 +139,7 @@
 }
 
 - (IBAction)recognizeSampleImage:(id)sender {
-    [self recognizeImageWithTesseract:[UIImage imageNamed:@"image_sample.jpg"]];
+    [self recognizeImageWithTesseract:[UIImage imageNamed:@"multiple_interword_spaces.jpg"]];
 }
 
 - (IBAction)clearCache:(id)sender
