@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18FCDE1A2205BA960011F980 /* multiple_interword_spaces.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 18FCDE192205BA960011F980 /* multiple_interword_spaces.jpg */; };
 		4115B9611A3EF8E90004EC0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115B9601A3EF8E90004EC0A /* main.m */; };
 		4115B9641A3EF8E90004EC0A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115B9631A3EF8E90004EC0A /* AppDelegate.m */; };
 		4115B9671A3EF8E90004EC0A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4115B9661A3EF8E90004EC0A /* ViewController.m */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		0AFE52DB6EB8A535E8FC8DF5 /* Pods-TestsProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsProjectTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TestsProjectTests/Pods-TestsProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		18FCDE192205BA960011F980 /* multiple_interword_spaces.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = multiple_interword_spaces.jpg; sourceTree = "<group>"; };
 		36B555C7AA77E5D05A50F31C /* Pods-TestsProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestsProjectTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TestsProjectTests/Pods-TestsProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4115B95B1A3EF8E90004EC0A /* TestsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4115B95F1A3EF8E90004EC0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				84E136311B66BAB00062F5A2 /* image_sample_left_mirrored.jpg */,
 				84E1362F1B66BA6B0062F5A2 /* image_sample_right_mirrored.jpg */,
 				84E1362D1B66B7950062F5A2 /* image_sample_down_mirrored.jpg */,
+				18FCDE192205BA960011F980 /* multiple_interword_spaces.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				84E136321B66BAB00062F5A2 /* image_sample_left_mirrored.jpg in Resources */,
 				84E1362E1B66B7950062F5A2 /* image_sample_down_mirrored.jpg in Resources */,
 				4115B96C1A3EF8E90004EC0A /* Images.xcassets in Resources */,
+				18FCDE1A2205BA960011F980 /* multiple_interword_spaces.jpg in Resources */,
 				4115B9851A3EF9920004EC0A /* Launch Screen.xib in Resources */,
 				84E1362A1B66AF480062F5A2 /* image_sample_right.jpg in Resources */,
 				84E1363E1B66BEE80062F5A2 /* well_scaned_page_left_mirrored.png in Resources */,

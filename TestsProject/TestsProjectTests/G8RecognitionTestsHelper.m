@@ -25,7 +25,7 @@ static NSString *const kG8Languages = @"eng";
 {
     self = [super init];
     if (self != nil) {
-        _engineMode = G8OCREngineModeTesseractOnly;
+        _engineMode = G8OCREngineModeLSTMOnly;
         _pageSegmentationMode = G8PageSegmentationModeAuto;
         _charWhitelist = @"";
         _waitDeadline = 180.0;
@@ -63,6 +63,7 @@ static NSString *const kG8Languages = @"eng";
 
     self.tesseract.charWhitelist = self.charWhitelist;
     self.tesseract.maximumRecognitionTime = self.waitDeadline;
+    [self.tesseract setVariableValue:@"1" forKey:@"preserve_interword_spaces"];
 };
 
 - (void)setupImage

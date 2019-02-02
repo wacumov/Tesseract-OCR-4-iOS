@@ -311,6 +311,25 @@ describe(@"Well scaned page", ^{
     });
 });
 
+#pragma mark - Test - Multiple interword spaces
+
+describe(@"Image with multiple interword spaces", ^{
+
+    beforeEach(^{
+        helper.image = [UIImage imageNamed:@"multiple_interword_spaces.jpg"];
+    });
+
+    it(@"Should preserve multiple interword spaces", ^{
+        [helper recognizeImage];
+
+        [[theValue(helper.tesseract.progress) should] equal:theValue(100)];
+
+        NSString *recognizedText = helper.tesseract.recognizedText;
+        [[recognizedText should] containString:@"   "];
+    });
+
+});
+
 #pragma mark - hOCR
 
 describe(@"hOCR", ^{
